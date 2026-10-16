@@ -1,0 +1,110 @@
+/* Nine keepsakes: each note is a different piece of stationery. */
+.page-memories {
+  --note-accent:#aa506f;
+  --note-ink:#704b5b;
+  --note-paper:#fffdf5;
+}
+.page-memories .journey-panel { position:relative; }
+.page-memories .chapter-heading h1 em { color:var(--note-accent); }
+.page-memories .chapter-heading .eyebrow { color:var(--note-accent); }
+.page-memories .memory-letter {
+  min-width:0;
+  isolation:isolate;
+  background:var(--note-paper);
+  padding:33px 26px 23px;
+  border-radius:5px;
+  border:1px solid #dfd3c6;
+  box-shadow:0 12px 24px #6f4e4c13;
+}
+.page-memories .memory-letter::before,
+.page-memories .memory-letter::after { position:absolute; content:""; pointer-events:none; border:0; inset:auto; }
+.page-memories .memory-letter > :not(.memory-pressed-flower) { position:relative; z-index:1; }
+.page-memories .memory-letter h2 { color:var(--note-ink); font-size:25px; line-height:1.2; }
+.page-memories .memory-text { color:var(--note-ink); font-size:13px; line-height:1.85; }
+.page-memories .memory-signoff { color:var(--note-accent); font-size:13px; line-height:1.7; }
+.page-memories .memory-number { color:var(--note-accent); font-size:9px; letter-spacing:.12em; }
+.page-memories .memory-pressed-flower { opacity:1; right:18px; top:12px; color:var(--note-accent); font-size:28px; transform:none; }
+
+/* 01 · Omar: a postcard brought home from the walk. */
+[data-memory-style="postcard"] { --note-paper:#fffdf3; --note-accent:#b15b6c; }
+[data-memory-style="postcard"] .memory-letter { border:6px solid transparent; border-image:repeating-linear-gradient(135deg,#d2969d 0 9px,#fff7eb 9px 18px,#96aaa6 18px 27px,#fff7eb 27px 36px) 6; padding:33px 22px 22px; }
+[data-memory-style="postcard"] .memory-pressed-flower { top:11px; right:14px; padding:2px 7px; border:1px dashed #cba0a2; background:#f7e3df; font-size:24px; transform:rotate(9deg); }
+[data-memory-style="postcard"] .memory-letter::after { top:14px; right:55px; width:44px; height:32px; border:1px solid #b39b8955; border-radius:50%; transform:rotate(-16deg); }
+[data-memory-style="postcard"] .memory-signoff { border-top:1px dashed #d5bcac; padding-top:12px; }
+
+/* 02 · The mug: a soft, round cafe note with a cup ring. */
+[data-memory-style="tea"] { --note-paper:#fff7e8; --note-accent:#ac704b; --note-ink:#755944; }
+[data-memory-style="tea"] .memory-letter { border-radius:55px 55px 22px 22px; border-color:#e4caa6; padding:42px 28px 24px; text-align:center; box-shadow:inset 0 0 0 6px #fffdf5,0 10px 18px #92613a12; }
+[data-memory-style="tea"] .memory-letter::before { width:78px; height:78px; top:10px; right:10px; border:5px double #c8a17730; border-radius:50%; transform:scaleY(.88) rotate(23deg); }
+[data-memory-style="tea"] .memory-pressed-flower { left:0; right:0; top:8px; font-size:26px; text-align:center; color:#c19668; }
+[data-memory-style="tea"] .memory-letter h2 { font-style:italic; }
+[data-memory-style="tea"] .memory-signoff { padding-top:9px; border-top:1px solid #e5d4b9; }
+
+/* 03 · Hair dye: a satin ribbon and a scalloped salon card. */
+[data-memory-style="ribbon"] { --note-paper:#fff3f7; --note-accent:#b5467e; --note-ink:#7a4862; }
+[data-memory-style="ribbon"] .memory-letter { border:1px dashed #d3a0bb; border-radius:26px 4px 26px 4px; padding:36px 24px 24px; background:repeating-linear-gradient(90deg,#fff5f8 0 11px,#fceef4 11px 12px); }
+[data-memory-style="ribbon"] .memory-letter::before { top:-9px; left:25px; right:25px; height:17px; border-radius:3px; background:linear-gradient(#d68db0,#edbbd0 48%,#c7719b); box-shadow:0 3px 5px #ae68812b; transform:rotate(-3deg); }
+[data-memory-style="ribbon"] .memory-pressed-flower { top:18px; right:17px; font-size:23px; transform:rotate(-20deg); }
+[data-memory-style="ribbon"] .memory-letter h2 { padding-right:15px; }
+[data-memory-style="ribbon"] .memory-signoff { padding-left:12px; border-left:3px solid #e4b0c9; }
+
+/* 04 · The necklace: a jewelry card in a tiny keepsake box. */
+[data-memory-style="jewel"] { --note-paper:#fffaf1; --note-accent:#9e7942; --note-ink:#6c5263; }
+[data-memory-style="jewel"] .memory-letter { text-align:center; border:3px double #c9ae76; border-radius:65px 65px 8px 8px; padding:69px 24px 24px; background:radial-gradient(ellipse at 50% 0,#f6e3ed,transparent 60%),var(--note-paper); }
+[data-memory-style="jewel"] .memory-pressed-flower { top:15px; left:calc(50% - 20px); width:40px; height:40px; display:grid; place-items:center; color:#b38a4c; font-size:35px; text-shadow:1px 1px white; }
+[data-memory-style="jewel"] .memory-letter::before { top:0; left:calc(50% - 38px); width:76px; height:37px; border:1px solid #bfa16a; border-top:0; border-radius:0 0 50% 50%; }
+[data-memory-style="jewel"] .memory-letter h2 { font-size:24px; }
+[data-memory-style="jewel"] .memory-signoff { border-top:1px solid #d5bf9755; padding-top:13px; }
+
+/* 05 · The words that stayed: a typographic quotation card. */
+[data-memory-style="quote"] { --note-paper:#f7f0fc; --note-accent:#876298; --note-ink:#65516f; }
+[data-memory-style="quote"] .memory-letter { border:0; border-left:5px solid #ad8bc0; border-radius:0 28px 28px 0; padding:43px 24px 23px 28px; box-shadow:8px 8px 0 #e6d9ee; }
+[data-memory-style="quote"] .memory-pressed-flower { top:-13px; right:15px; font:115px/1 Georgia,serif; color:#e0cde9; z-index:0; }
+[data-memory-style="quote"] .memory-letter h2 { font-size:27px; font-style:italic; }
+[data-memory-style="quote"] .memory-text { line-height:1.95; }
+[data-memory-style="quote"] .memory-signoff { padding-top:9px; font-style:normal; font-family:inherit; font-size:11px; letter-spacing:.02em; }
+
+/* 06 · Fast food: a little receipt, with a torn edge. */
+[data-memory-style="receipt"] { --note-paper:#fffdf3; --note-accent:#b45f53; --note-ink:#78615a; }
+[data-memory-style="receipt"] .memory-letter { width:94%; margin:0 auto; border:0; border-radius:0; padding:32px 23px 35px; background:repeating-linear-gradient(#fffdf4 0 3px,#f4efdf66 3px 4px); filter:drop-shadow(0 8px 6px #77625018); clip-path:polygon(0 0,100% 0,100% 96%,95% 100%,90% 96%,85% 100%,80% 96%,75% 100%,70% 96%,65% 100%,60% 96%,55% 100%,50% 96%,45% 100%,40% 96%,35% 100%,30% 96%,25% 100%,20% 96%,15% 100%,10% 96%,5% 100%,0 96%); }
+[data-memory-style="receipt"] .memory-letter h2 { font:700 22px/1.35 monospace; border-top:1px dashed #b8a18e; border-bottom:1px dashed #b8a18e; padding:12px 0; margin:20px 0 14px; }
+[data-memory-style="receipt"] .memory-text { font-family:monospace; font-size:13px; line-height:1.8; }
+[data-memory-style="receipt"] .memory-signoff { font:12px/1.8 monospace; border-top:1px dashed #b8a18e; padding-top:11px; }
+[data-memory-style="receipt"] .memory-pressed-flower { top:15px; right:17px; font-size:24px; transform:rotate(13deg); }
+
+/* 07 · A drink: a translucent label and little rising bubbles. */
+[data-memory-style="soda"] { --note-paper:#f2faf7; --note-accent:#56877e; --note-ink:#4f726b; }
+[data-memory-style="soda"] .memory-letter { padding:36px 25px 26px; border:3px solid #fff; border-radius:40px 40px 48px 12px; background:radial-gradient(circle at 92% 12%,#fce1ad 0 20px,transparent 21px),linear-gradient(150deg,#f5fff9,#e2f2ee); box-shadow:inset 0 0 0 1px #b5d5ca,0 8px 20px #52797012; }
+[data-memory-style="soda"] .memory-letter::before { top:16px; right:28px; width:11px; height:11px; border:1px solid #a7c5b6; border-radius:50%; box-shadow:-24px 15px 0 -2px #c2ded1,7px 36px 0 2px #d2e8dc; }
+[data-memory-style="soda"] .memory-pressed-flower { display:none; }
+[data-memory-style="soda"] .memory-letter h2 { font-family:"DM Sans",system-ui,sans-serif; font-size:23px; font-weight:600; letter-spacing:-.04em; }
+[data-memory-style="soda"] .memory-signoff { border-top:1px solid #bed9cf; padding-top:12px; }
+
+/* 08 · Japan: washi paper, a rising sun and a folded corner. */
+[data-memory-style="japan"] { --note-paper:#fff9ee; --note-accent:#b46365; --note-ink:#795f5a; }
+[data-memory-style="japan"] .memory-letter { padding:40px 26px 27px; border-radius:2px; border:1px solid #deccba; background:radial-gradient(circle at 91% 13%,#d9908b44 0 36px,transparent 37px),repeating-linear-gradient(45deg,#fff9ee 0 5px,#f5ecdd77 5px 6px); }
+[data-memory-style="japan"] .memory-letter::after { bottom:0; right:0; width:27px; height:27px; background:linear-gradient(135deg,#dfccbc 0 48%,#f8efe5 50%); box-shadow:-2px -2px 4px #88665313; }
+[data-memory-style="japan"] .memory-pressed-flower { top:11px; right:18px; color:#c5797f; transform:rotate(19deg); }
+[data-memory-style="japan"] .memory-letter h2 { border-bottom:1px solid #ba7d7444; padding-bottom:12px; }
+[data-memory-style="japan"] .memory-signoff { padding-left:12px; border-left:2px solid #cd9992; }
+
+/* 09 · The sketchbook: graph paper, a spiral binding and pencil marks. */
+[data-memory-style="sketch"] { --note-paper:#fcfcf6; --note-accent:#66829b; --note-ink:#536677; }
+[data-memory-style="sketch"] .memory-letter { padding:38px 24px 24px 35px; border-radius:4px 16px 16px 4px; border-color:#bbc7cc; background:linear-gradient(#a8b9cf26 1px,transparent 1px),linear-gradient(90deg,#a8b9cf26 1px,transparent 1px),#fcfcf6; background-size:16px 16px; box-shadow:4px 4px 0 #e2e7e6,5px 5px 0 #bbc7cc; }
+[data-memory-style="sketch"] .memory-letter::before { top:16px; bottom:16px; left:-6px; width:17px; background:repeating-linear-gradient(transparent 0 7px,#9a9e9d 7px 10px,transparent 10px 24px); border-right:1px solid #c4c6bf; }
+[data-memory-style="sketch"] .memory-letter::after { top:-8px; left:calc(50% - 36px); width:72px; height:19px; background:#dfd7b99e; transform:rotate(-5deg); box-shadow:inset 0 0 0 1px #c8bf9e33; }
+[data-memory-style="sketch"] .memory-pressed-flower { top:12px; right:17px; font-size:32px; transform:rotate(-14deg); }
+[data-memory-style="sketch"] .memory-letter h2 { font-style:italic; }
+[data-memory-style="sketch"] .memory-signoff { text-decoration:underline; text-decoration-style:wavy; text-decoration-color:#aebcc7; text-underline-offset:5px; }
+
+@media(max-width:650px) {
+  .page-memories .memory-letter { padding-inline:21px; }
+  .page-memories .memory-letter h2 { font-size:22px; }
+  .page-memories .memory-text { font-size:13px; }
+  [data-memory-style="quote"] .memory-letter { padding-left:22px; }
+  [data-memory-style="receipt"] .memory-letter { width:100%; }
+  [data-memory-style="sketch"] .memory-letter { padding-left:29px; }
+}
+
+.page-memories .memory-notebook { display:grid; grid-template-columns:minmax(0,1fr); gap:32px; }
+.page-memories .memory-entry { min-width:0; }

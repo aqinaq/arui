@@ -5,17 +5,10 @@ const seal = document.querySelector("#heartSeal");
 const toast = document.querySelector("#toast");
 const apologyCard = document.querySelector("#apologyCard");
 const dragHandle = document.querySelector("#dragHandle");
+const noReplies = ["жожожоқ", "жоқ дегенде жоқ", "шынымен жоқ па?", "жоқ.", "жоқ кет"];
 
-const excuses = [
-  "I understand… but I’m still sorry 🌸",
-  "Take all the time you need.",
-  "I’ll keep saying sorry.",
-  "No pressure—I truly mean it.",
-  "My apology will still be here.",
-];
-
-let escapes = 0;
 let lastMove = 0;
+let noMoves = 0;
 let cardX = 0;
 let cardY = 0;
 let dragStartX = 0;
@@ -64,9 +57,12 @@ window.addEventListener("resize", () => updateCardPosition(cardX, cardY));
 
 function moveNoButton() {
   const now = Date.now();
-  if (now - lastMove < 130) return;
+  if (now - lastMove < 450) return;
   lastMove = now;
 
+  const previousPosition = noButton.getBoundingClientRect();
+  noButton.textContent = noReplies[noMoves % noReplies.length];
+  noMoves += 1;
   const button = noButton.getBoundingClientRect();
   const padding = Math.min(64, Math.max(28, window.innerWidth * 0.035));
   const maxX = Math.max(padding, window.innerWidth - button.width - padding);
@@ -89,16 +85,17 @@ function moveNoButton() {
 
   if (!noButton.classList.contains("is-escaped")) {
     document.body.appendChild(noButton);
+    noButton.classList.add("is-escaped", "is-placing");
+    noButton.style.left = `${previousPosition.left}px`;
+    noButton.style.top = `${previousPosition.top}px`;
+    noButton.style.right = "auto";
+    void noButton.offsetWidth;
+    noButton.classList.remove("is-placing");
   }
-  noButton.classList.add("is-escaped");
   noButton.style.left = `${x}px`;
-  noButton.style.right = "auto";
   noButton.style.top = `${y}px`;
-  noButton.style.setProperty("--tilt", `${Math.random() * 16 - 8}deg`);
+  noButton.style.setProperty("--tilt", `${Math.random() * 10 - 5}deg`);
   noButton.classList.add("is-running");
-  escapes += 1;
-  hint.textContent = excuses[(escapes - 1) % excuses.length];
-  noButton.textContent = escapes > 5 ? "Still no?" : escapes > 2 ? "Nice try" : "Nope";
 }
 
 noButton.addEventListener("pointerenter", moveNoButton);
@@ -117,7 +114,7 @@ function showToast(message) {
 }
 
 seal.addEventListener("click", (event) => {
-  showToast("Psst… I mean every word 💗");
+  showToast("мені кешіріңізші.");
   for (let i = 0; i < 9; i += 1) {
     const heart = document.createElement("span");
     heart.className = "pop-heart";

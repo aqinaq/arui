@@ -1,0 +1,35 @@
+/* Transparent hit areas follow the actual 3D butterflies. */
+button.butterfly-target {
+  position:fixed; left:0; top:0; z-index:3;
+  width:48px; height:48px; padding:0; margin:0;
+  border:0; border-radius:50%; background:transparent;
+  cursor:pointer; -webkit-tap-highlight-color:transparent;
+}
+button.butterfly-target:focus-visible { outline:2px dashed #ad5580; outline-offset:3px; background:#fff6fa22; }
+.butterfly-letter-dialog {
+  position:fixed; inset:0; margin:auto; padding:42px 18px 20px;
+  width:min(470px,calc(100vw - 32px)); max-height:calc(100svh - 40px);
+  box-sizing:border-box; overflow:auto; overscroll-behavior:contain;
+  border:1px solid #fff; border-radius:27px;
+  background:linear-gradient(145deg,#fffcf8,#faeaf1);
+  box-shadow:0 25px 80px #53394745,inset 0 -4px 0 #ddc9c14d;
+  color:#704b5b;
+}
+.butterfly-letter-dialog[open] { animation:butterfly-letter-open .35s ease-out both; }
+.butterfly-letter-dialog::backdrop { background:#6e4d6433; backdrop-filter:blur(3px); }
+.butterfly-letter-dialog .memory-letter { position:relative; min-height:0; margin:0; }
+.butterfly-letter-dialog .memory-letter h2 { font-family:"Playfair Display",Georgia,serif; margin:18px 0; padding-right:8px; }
+.butterfly-letter-dialog .memory-text { white-space:pre-line; }
+.butterfly-letter-dialog .memory-number { margin:0; padding-right:28px; }
+.butterfly-letter-dialog .memory-signoff { font-family:Georgia,serif; font-style:italic; margin:20px 0 0; }
+.butterfly-letter-dialog .memory-pressed-flower { position:absolute; }
+.butterfly-letter-dialog .letter-close {
+  position:absolute; top:3px; right:6px; z-index:3;
+  width:40px; height:40px; padding:0; border:0; border-radius:50%;
+  background:transparent; color:#a15d7c; font:27px/1 Georgia,serif; cursor:pointer;
+}
+.butterfly-letter-dialog .letter-close:hover { background:#f3dbe6; }
+.butterfly-letter-dialog .letter-close:focus-visible { outline:2px solid #be7398; outline-offset:-5px; }
+@keyframes butterfly-letter-open { from { opacity:0; transform:translateY(18px) scale(.96) rotate(-1deg); } to { opacity:1; transform:none; } }
+@media(max-width:650px) { .butterfly-letter-dialog { padding:42px 12px 16px; border-radius:23px; } }
+@media(prefers-reduced-motion:reduce) { .butterfly-letter-dialog[open] { animation:none; } }

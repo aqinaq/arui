@@ -1,0 +1,75 @@
+/* A little wrapped gift, with satin, tissue paper and a pearl knot. */
+.page-bouquet .journey-panel { width:min(410px,100%); padding:24px; }
+.page-bouquet .bouquet-layout { grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:15px; }
+.page-bouquet .bouquet-display {
+  position:relative; width:100%; height:auto; aspect-ratio:320/380;
+  margin:0; border:0; border-radius:0; background:none; overflow:visible;
+  isolation:isolate;
+}
+.bouquet-aura { position:absolute; inset:4% -8% 7%; border-radius:50%; background:radial-gradient(ellipse,#ffe6edaa,#fff3d950 55%,transparent 72%); z-index:0; }
+.page-bouquet #bouquetCanvas { z-index:2; }
+.page-bouquet #bouquetEmpty { z-index:4; top:18%; padding:0 8px; font:italic 12px/1.45 Georgia,serif; color:#a17b89; }
+.page-bouquet .bouquet-tools h2 { margin:0 0 8px; }
+.page-bouquet .bouquet-tools .feedback { font-size:12px; line-height:1.7; margin:0 0 14px; }
+.page-bouquet #finishBouquet { min-height:42px; width:100%; padding:10px 9px; font-size:11px; line-height:1.3; }
+.page-bouquet #resetBouquet { display:block; margin:9px auto 0; font-size:10px; }
+.bouquet-display.is-picking #bouquetCanvas { animation:bouquet-catch .4s ease-out; transform-origin:center; }
+
+/* Finishing brings the gift forward and invites the butterflies closer. */
+.page-bouquet.bouquet-finished .journey-panel {
+  width:min(1020px,100%); padding:8px 12px 24px; transform:none;
+  background:transparent; border-color:transparent; box-shadow:none; backdrop-filter:none;
+}
+.bouquet-finished .chapter-heading { cursor:default; touch-action:pan-y; }
+.page-bouquet.bouquet-finished .chapter-heading h1 { font-size:30px; }
+.page-bouquet.bouquet-finished .chapter-description { font-size:12px; margin-bottom:4px; }
+.page-bouquet.bouquet-finished .bouquet-layout { display:block; }
+.page-bouquet.bouquet-finished .bouquet-display { width:min(820px,100%); height:clamp(460px,76svh,900px); aspect-ratio:auto; margin:-20px auto -12px; animation:bouquet-approach .85s cubic-bezier(.16,.8,.25,1) both; }
+.bouquet-finished .bouquet-tools { display:none; }
+.bouquet-finished .bouquet-aura { inset:-8% -22% 0; background:radial-gradient(ellipse,#fff9e6c7,#fbe5f170 55%,transparent 73%); }
+.bouquet-butterflies { position:absolute; inset:0; z-index:5; pointer-events:none; }
+.page-bouquet .bouquet-butterfly {
+  position:absolute; display:block; width:var(--butterfly-size); height:var(--butterfly-size);
+  min-width:44px; min-height:44px; padding:0; border:0; border-radius:50%;
+  background:transparent; pointer-events:auto; cursor:pointer;
+  animation:gift-butterfly-flight var(--flight-time,5s) var(--flight-delay,0s) ease-in-out infinite;
+  -webkit-tap-highlight-color:transparent;
+}
+.bouquet-butterfly svg { display:block; width:100%; height:100%; overflow:visible; filter:drop-shadow(0 6px 4px #9b608d2b); transition:filter .2s; }
+.bouquet-butterfly:hover svg { filter:drop-shadow(0 4px 6px #fff) drop-shadow(0 6px 4px #9b608d3b); }
+.bouquet-butterfly:focus-visible { outline:2px dashed #ae6090; outline-offset:4px; }
+.bouquet-butterfly:hover,.bouquet-butterfly:focus-visible { animation-play-state:paused; }
+.gift-wing { transform-origin:49px 43px; animation:gift-wingbeat .8s ease-in-out infinite alternate; }
+.butterfly-1 { --butterfly-size:83px; --flight-time:6s; --flight-delay:-1s; left:4%; top:20%; }
+.butterfly-2 { --butterfly-size:53px; --flight-time:4.7s; --flight-delay:-2s; right:12%; top:8%; }
+.butterfly-3 { --butterfly-size:66px; --flight-time:5.3s; --flight-delay:-3s; right:2%; top:42%; }
+.butterfly-4 { --butterfly-size:44px; --flight-time:4.2s; --flight-delay:-.5s; left:11%; top:63%; }
+.butterfly-5 { --butterfly-size:40px; --flight-time:5.5s; --flight-delay:-4s; left:25%; top:5%; }
+.butterfly-6 { --butterfly-size:48px; --flight-time:6.5s; --flight-delay:-2.4s; right:12%; top:72%; }
+.butterfly-2 .gift-wing,.butterfly-5 .gift-wing { animation-duration:.6s; }
+.butterfly-3 .gift-wing,.butterfly-6 .gift-wing { animation-delay:-.4s; }
+/* Only the bouquet responds to orbit gestures; butterflies stay clickable above it. */
+.page-bouquet.bouquet-finished #bouquetCanvas { pointer-events:auto; touch-action:none; cursor:grab; border-radius:32px; }
+.page-bouquet.bouquet-finished #bouquetCanvas.is-orbiting { cursor:grabbing; }
+.page-bouquet #bouquetCanvas:focus-visible { outline:1px dashed #bd779985; outline-offset:-6px; }
+.page-bouquet .bouquet-add-more { display:block; margin:15px auto 0; font-size:11px; color:#81576f; background:#fff7faad; padding:9px 16px; border:1px solid #ffffffd9; border-radius:24px; }
+.page-bouquet.bouquet-finished .chapter-footer { max-width:400px; margin:17px auto 0; padding-top:14px; border-color:#ffffff8c; }
+.page-bouquet.bouquet-finished .chapter-back { background:#fff4f8b5; border-radius:20px; padding:9px 12px; }
+.page-bouquet.bouquet-finished .chapter-footer .btn { min-height:42px; font-size:12px; padding:10px 19px; }
+@keyframes bouquet-catch { 35% { transform:translateY(3px) scale(.97,1.02); } 70% { transform:translateY(-2px); } }
+@keyframes bouquet-approach { from { opacity:.25; transform:translateY(70px) scale(.35) rotate(-4deg); } to { opacity:1; transform:none; } }
+@keyframes gift-butterfly-flight { 0%,100% { transform:translate(0,0) rotate(-8deg); } 40% { transform:translate(7px,-14px) rotate(9deg); } 75% { transform:translate(-5px,-5px) rotate(-3deg); } }
+@keyframes gift-wingbeat { from { transform:perspective(150px) rotateY(-13deg); } to { transform:perspective(150px) rotateY(58deg); } }
+@media(max-width:650px) {
+  .page-bouquet .journey-panel { padding:22px 18px; }
+  .page-bouquet .bouquet-layout { gap:8px; }
+  .page-bouquet #finishBouquet { font-size:10px; }
+  .page-bouquet.bouquet-finished .journey-panel { padding:12px 8px 22px; }
+  .page-bouquet.bouquet-finished .chapter-heading h1 { font-size:27px; }
+  .page-bouquet.bouquet-finished .bouquet-display { width:100%; height:clamp(420px,70svh,680px); }
+  .butterfly-1 { --butterfly-size:64px; left:0; }
+  .butterfly-3 { --butterfly-size:52px; right:0; }
+  .butterfly-2 { --butterfly-size:44px; }
+}
+@media(prefers-reduced-motion:reduce) {
+}

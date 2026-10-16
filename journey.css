@@ -1,0 +1,297 @@
+/* A garden journal: each chapter has its own object to explore. */
+[hidden] { display: none !important; }
+.journey-page { --sage: #48634d; --rose: #ad386c; }
+.journey-header { position: relative; z-index: 3; display:flex; justify-content:space-between; align-items:center; gap:20px; padding:28px 5vw 12px; }
+.garden-brand { color:#653b50; text-decoration:none; font-family:Georgia,serif; font-size:25px; }
+.garden-brand span { font-size:16px; vertical-align:middle; margin-left:8px; }
+.header-note { font-size:11px; letter-spacing:.13em; color:#795665; }
+.journey-nav { position:relative; z-index:3; display:flex; justify-content:center; gap:5px; flex-wrap:wrap; margin:12px auto 20px; padding:8px; width:fit-content; max-width:94%; border:1px solid #ffffffc9; border-radius:24px; background:#fff9f5c7; backdrop-filter:blur(12px); box-shadow:0 6px 20px #5c493711; }
+.journey-nav a { display:flex; align-items:center; gap:7px; border-radius:17px; padding:10px 12px; color:#795568; text-decoration:none; font-size:11px; }
+.journey-nav a span { font-size:9px; opacity:.65; }
+.journey-nav a[aria-current] { background:#a93a6a; color:white; box-shadow:0 3px 8px #93345b22; }
+.journey-main { position:relative; z-index:2; padding:12px 24px 65px; min-height:calc(100svh - 150px); display:grid; place-items:center; }
+.journey-panel { width:min(890px,100%); padding:36px 52px 28px; border:1px solid #fff; border-radius:32px; background:linear-gradient(145deg,#fffdf9f5,#fff2f5ed); box-shadow:0 25px 65px #35452b2b,inset 0 -5px 0 #d7c9bc66; backdrop-filter:blur(12px); }
+.chapter-heading { text-align:center; }
+.chapter-heading .eyebrow { margin:0 auto 15px; font-size:9px; }
+.chapter-heading h1 { font-size:clamp(32px,4.1vw,49px); line-height:1.12; margin:0 0 16px; }
+.chapter-description { color:#80646b; font-size:13px; line-height:1.7; margin:0 auto 25px; max-width:470px; }
+.journey-panel h2 { font-family:"Playfair Display",Georgia,serif; font-size:24px; line-height:1.3; letter-spacing:-.03em; }
+.chapter-footer { display:flex; justify-content:space-between; align-items:center; gap:18px; margin-top:28px; border-top:1px solid #e6ced3; padding-top:22px; }
+.chapter-footer .btn { min-height:46px; padding:12px 24px; font-size:13px; }
+.chapter-back,.text-button { color:#8c4e69; font-size:12px; text-decoration:none; }
+.text-button { border:0; border-bottom:1px solid #dba6bb; background:transparent; padding:9px 0; cursor:pointer; font-family:inherit; }
+.journey-page button { cursor:pointer; font-family:inherit; }
+.journey-page button:disabled { cursor:default; opacity:.65; }
+.journey-page :is(button,a,input,summary):focus-visible { outline:3px solid #9c4673; outline-offset:5px; }
+.skip-link { position:fixed; top:-100px; left:15px; z-index:30; padding:12px; background:white; color:var(--ink); }
+.skip-link:focus { top:10px; }
+.small-label { font-size:9px; letter-spacing:.15em; color:#a45575; }
+.local-note { display:block; color:#89717b; font-size:10px; line-height:1.5; }
+.feedback { color:#845469; font-size:13px; line-height:1.7; min-height:24px; }
+/* Personal memories, filed as handwritten notes. */
+.memory-notebook { display:grid; grid-template-columns:175px 1fr; gap:22px; align-items:start; }
+.memory-tabs { display:grid; gap:7px; padding-top:12px; }
+.memory-tabs button { display:flex; align-items:center; gap:12px; text-align:left; border:1px solid #e3cdd4; border-radius:5px 16px 16px 5px; padding:12px 13px; min-height:44px; background:#fff9f3; color:#8a6473; font-size:12px; transition:transform .2s,background .2s; }
+.memory-tabs button span { font:italic 11px Georgia,serif; color:#ba8b9b; }
+.memory-tabs button[aria-pressed="true"] { background:#9f4b71; color:#fff5f8; border-color:#9f4b71; transform:translateX(5px); box-shadow:0 4px 9px #75425622; }
+.memory-tabs button[aria-pressed="true"] span { color:#f6cddd; }
+.memory-letter { position:relative; min-height:455px; padding:43px 31px 24px; background:repeating-linear-gradient(#fffdf5 0 31px,#e9e0ce66 31px 32px); border:1px solid #e0d5c3; border-radius:3px 15px 15px 3px; box-shadow:5px 5px 0 #efe5d8,6px 6px 0 #d6c8ba,0 14px 23px #6e4e5812; }
+.memory-letter::before { content:""; position:absolute; left:16px; top:0; bottom:0; border-left:1px solid #d9a5b760; }
+.memory-pressed-flower { position:absolute; right:22px; top:12px; color:#bf85a0; font-size:35px; transform:rotate(17deg); opacity:.65; }
+.memory-letter h2 { font-size:29px; margin:22px 0; padding-right:8px; }
+.memory-text { font-size:15px; line-height:2.05; color:#775968; white-space:pre-line; }
+.memory-signoff { font:italic 16px/1.8 Georgia,serif; color:#ac778d; margin-top:25px; }
+.memory-paging { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:22px; padding-top:10px; border-top:1px solid #e0cdd0; }
+.memory-paging > span { font-size:10px; color:#9c7c89; }
+/* Quiz cards */
+.quiz-sheet { width:min(560px,100%); margin:0 auto; padding:22px 26px; border-radius:22px; border:1px solid #e7d9c9; background:#fffefa; }
+.quiz-meta { display:flex; justify-content:space-between; gap:10px; color:#96717b; font-size:10px; }
+.quiz-sheet progress { appearance:none; width:100%; height:4px; border:0; border-radius:4px; margin:16px 0 2px; background:#f1e4e8; }
+.quiz-sheet progress::-webkit-progress-bar { background:#f1e4e8; border-radius:4px; }
+.quiz-sheet progress::-webkit-progress-value { background:#bf648c; border-radius:4px; }
+.quiz-sheet progress::-moz-progress-bar { background:#bf648c; }
+.quiz-sheet h2 { font-size:24px; margin:14px 0 20px; }
+.quiz-answers { display:grid; gap:9px; }
+.quiz-answers button { display:flex; align-items:center; gap:12px; text-align:left; padding:12px 14px; border-radius:13px; border:1px solid #e9d6dc; background:#fff9fa; color:#71525d; font-size:13px; min-height:48px; }
+.quiz-answers button span { display:grid; place-content:center; flex-shrink:0; width:24px; height:24px; border:1px solid #e6ced7; border-radius:50%; font-size:10px; }
+.quiz-answers button[data-correct="true"] { border-color:#c7819f; background:#f7e4ed; color:#815168; opacity:1; }
+.quiz-answers button[data-chosen="true"]:not([data-correct="true"]) { border-color:#c7819f; background:#f7e4ed; opacity:1; }
+.quiz-sheet .btn { min-height:42px; font-size:12px; padding:10px 22px; }
+/* Opening a real folded envelope. */
+.envelope-wrap { perspective:1100px; padding:20px 0; }
+.envelope { position:relative; display:block; margin:12px auto 30px; width:min(430px,100%); height:235px; border:1px solid #d5abaf; border-radius:6px 6px 14px 14px; background:linear-gradient(150deg,#ebbbc7,#e8a7bb); box-shadow:0 22px 30px #74455422,inset 0 0 0 7px #ffffff19; transform:rotate(-3deg); transition:transform .6s; overflow:visible; }
+.envelope::before { content:""; position:absolute; inset:0; clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%); background:linear-gradient(135deg,#f6d0d8,#eeb9c9); border-radius:6px 6px 14px 14px; }
+.envelope-flap { position:absolute; z-index:1; inset:0 0 auto; height:135px; clip-path:polygon(0 0,100% 0,50% 100%); background:linear-gradient(#f7d9df,#e9b3c2); transform-origin:top; transition:transform .8s; backface-visibility:hidden; }
+.wax-seal { position:absolute; z-index:2; top:93px; left:calc(50% - 27px); width:54px; height:54px; border:4px double #e899b0; border-radius:50%; display:grid; place-content:center; background:radial-gradient(at 30% 25%,#e293b1,#a83f71); color:#ffe6ec; font-size:23px; box-shadow:0 5px 10px #6f294133; }
+.envelope-address { position:absolute; bottom:48px; left:0; width:100%; font:italic 21px Georgia,serif; color:#90536b; }
+.envelope-action { position:absolute; bottom:20px; left:0; width:100%; color:#a4647d; font-size:10px; }
+.envelope.is-open { transform:rotate(0); height:100px; margin-top:60px; }
+.envelope.is-open .envelope-flap { transform:rotateX(180deg); }
+.envelope.is-open .wax-seal,.envelope.is-open .envelope-address { opacity:0; }
+.letter-paper { position:relative; width:min(540px,100%); margin:-55px auto 0; padding:32px 40px; border:1px solid #e2d8c5; background:repeating-linear-gradient(#fffef7 0 29px,#eae4d133 29px 30px); box-shadow:0 12px 35px #62493b1c; animation:letter-reveal .8s ease both; }
+.letter-paper p:not(.small-label) { font-size:14px; line-height:2; color:#785a64; }
+.letter-signature { font:italic 19px/1.6 Georgia,serif !important; color:#ae587d !important; }
+@keyframes letter-reveal { from { opacity:0; transform:translateY(35px); } to { opacity:1; transform:translateY(0); } }
+/* The bouquet uses another live WebGL scene. */
+.bouquet-layout { display:grid; grid-template-columns:1fr 1fr; gap:25px; align-items:center; }
+.bouquet-display { position:relative; height:330px; border-radius:180px 180px 24px 24px; background:radial-gradient(ellipse at 50% 40%,#fffdf7,#e7ead966); border:1px solid #e6dfcc; overflow:hidden; }
+#bouquetCanvas { position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none; }
+.bouquet-wrap { position:absolute; width:130px; height:130px; bottom:15px; left:calc(50% - 65px); background:linear-gradient(130deg,#cfb58f,#efe0ba 45%,#cbb08a 46%,#f3dfbc); clip-path:polygon(0 0,100% 0,65% 100%,35% 100%); z-index:3; }
+.bouquet-ribbon { position:absolute; z-index:4; bottom:54px; left:calc(50% - 49px); width:98px; text-align:center; padding:7px; font:italic 14px Georgia,serif; color:#fff1f5; background:#bc678a; transform:rotate(-7deg); box-shadow:0 3px 7px #7f526422; }
+#bouquetEmpty { position:absolute; top:65px; left:0; width:100%; text-align:center; padding:0 30px; font:italic 18px Georgia,serif; color:#a49488; }
+.bouquet-tools h2 { margin:8px 0 15px; font-size:32px; }
+.flower-choices { display:flex; flex-wrap:wrap; gap:7px; }
+.flower-choices button { border:1px solid #ddc8d0; background:#fffaf7; color:#775364; border-radius:20px; padding:9px 12px; min-height:40px; font-size:11px; }
+.flower-choices button::before { content:""; display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--flower-color); margin-right:7px; }
+.picked-flowers { padding:0; display:flex; flex-wrap:wrap; gap:5px; list-style:none; }
+.picked-flowers li { border:1px solid #ccd9be; background:#edf3e6; color:#576d4b; padding:5px 9px; border-radius:8px; font-size:10px; }
+/* A small invitation ticket. */
+.date-choices { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+.date-choices button { border:1px solid #e8d4d5; border-radius:70px 70px 18px 18px; background:#fffdf6; padding:23px 10px; color:#7b5360; transition:transform .25s,background .25s; }
+.date-choices button > span { display:block; font-size:32px; margin-bottom:15px; }
+.date-choices strong { display:block; font:20px Georgia,serif; }
+.date-choices small { display:block; font-size:9px; margin:10px auto 0; max-width:100px; line-height:1.6; color:#9b7e7f; }
+.date-choices button[aria-pressed="true"] { background:#f9e0e9; border-color:#c37698; transform:translateY(-6px); box-shadow:0 7px 12px #ad668022; }
+.date-ticket { position:relative; display:grid; grid-template-columns:1fr 100px; margin:25px auto 0; border:1px solid #e0c7b8; border-radius:15px; background:#fff9e9; text-align:left; box-shadow:0 9px 18px #89635015; }
+.date-ticket > div:first-child { padding:23px; }
+.date-ticket h2 { margin:12px 0; }
+.date-ticket p:not(.small-label) { font-size:12px; line-height:1.7; color:#8b7066; }
+.ticket-stub { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:15px; border-left:2px dashed #d4baaa; color:#ad786c; }
+.ticket-stub span { font-size:9px; letter-spacing:.1em; }.ticket-stub strong { font:45px Georgia,serif; }
+.ticket-stamp { display:inline-block; padding:6px 13px; border:2px solid #a5b18c; border-radius:50%; transform:rotate(-12deg); font:italic 16px Georgia,serif; color:#7f916d; }
+/* The quiet ending. */
+.page-stay .journey-panel { max-width:630px; text-align:center; }
+.quiet-orbit { position:relative; width:140px; height:140px; margin:0 auto 25px; border:1px solid #e0c0cc; border-radius:50%; display:grid; place-content:center; }
+.quiet-orbit::before { content:""; position:absolute; inset:15px; border:1px dashed #dfbdcc; border-radius:50%; }
+.quiet-orbit > span { font:55px Georgia,serif; color:#c47a9b; animation:quiet-breath 6s ease-in-out infinite; }
+.quiet-orbit i { position:absolute; width:10px; height:10px; background:#c598ae; border:2px solid #fff7f9; border-radius:50%; top:12px; left:20px; }
+.quiet-orbit i:nth-of-type(2) { top:100px; left:123px; background:#9eac8b; }.quiet-orbit i:nth-of-type(3) { top:129px; left:35px; background:#d4b77e; }
+@keyframes quiet-breath { 50% { transform:scale(1.12); opacity:.65; } }
+.sound-button { padding:13px 23px; border:1px solid #c9d3bb; border-radius:30px; background:#f5f8ef; color:#5d7350; font-size:13px; min-height:46px; }
+.sound-button[aria-pressed="true"] { background:#526b48; color:white; }
+.last-secret { text-align:left; margin:28px 0 25px; border-top:1px solid #e5d1d7; border-bottom:1px solid #e5d1d7; padding:18px 8px; }
+.last-secret summary { cursor:pointer; color:#9c5074; font:italic 19px Georgia,serif; }
+.last-secret p { font-size:13px; line-height:1.9; color:#856574; }
+.ending-links { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }.ending-links a { color:#8a6777; font-size:11px; text-underline-offset:4px; }
+@media(max-width:650px) {
+ .journey-header { padding:18px 20px 8px; }.header-note { display:none; }.garden-brand span { font-size:13px; }
+ .journey-nav { gap:1px; padding:5px; border-radius:18px; }.journey-nav a { padding:9px 8px; font-size:10px; gap:4px; }
+ .journey-nav a span { display:none; }.journey-main { padding:4px 15px 36px; }.journey-panel { padding:26px 21px 23px; border-radius:26px; }
+ .chapter-heading h1 { font-size:34px; }.chapter-description { font-size:12px; }.chapter-heading .eyebrow { font-size:8px; }
+ .bouquet-layout { grid-template-columns:1fr; gap:18px; }.bouquet-display { height:300px; max-width:320px; width:100%; margin:auto; }.bouquet-tools { text-align:center; }.flower-choices,.picked-flowers { justify-content:center; }
+ .date-choices { grid-template-columns:repeat(2,1fr); gap:13px; }.date-choices button { padding:18px 10px; border-radius:45px 45px 16px 16px; }
+ .date-ticket { grid-template-columns:1fr 65px; }.date-ticket > div:first-child { padding:17px; }
+ .quiz-sheet { padding:20px 16px; }.quiz-meta { font-size:9px; }.quiz-sheet h2 { font-size:22px; }
+ .letter-paper { padding:25px 23px; }.letter-paper p:not(.small-label) { font-size:13px; }.envelope { height:210px; }.envelope-address { font-size:18px; }
+ .chapter-footer .btn { font-size:12px; padding:11px 18px; }.chapter-footer { margin-top:24px; }.chapter-back { font-size:11px; }
+}
+@media(prefers-reduced-motion:reduce) { .journey-page *, .journey-page *::before, .journey-page *::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+
+/* Keep the tiny answer in place, with a full invisible button target. */
+.quiz-answers .secret-answer { min-height:44px; justify-content:flex-end; padding:10px 13px; border-color:transparent; background:transparent; }
+.quiz-answers .secret-answer small { font-size:8px; font-weight:400; color:#bba5ad; padding:3px 5px; border:1px solid transparent; border-radius:5px; }
+.quiz-answers button.secret-answer[data-correct="true"] { border-color:transparent; background:transparent; }
+.quiz-answers .secret-answer:focus-visible small,.quiz-answers .secret-answer.is-revealed small { border-color:#c7819f; color:#815168; }
+.quiz-answers.is-ranking { gap:12px; }
+.ranking-help { font-size:12px; line-height:1.7; color:#8b727b; margin:0; }
+.ranking-pool,.ranking-row { display:flex; flex-wrap:wrap; gap:6px; min-height:51px; align-items:center; }
+.ranking-pool { padding:9px; border:1px dashed #dbc4cf; border-radius:13px; background:#fff8fb; }
+.quiz-answers .rank-name { display:inline-flex; justify-content:center; flex:0 0 auto; padding:9px 12px; font-size:12px; min-height:44px; border-radius:11px; background:#fff; cursor:grab; box-shadow:0 3px 7px #77586613; }
+.quiz-answers .rank-name[aria-pressed="true"] { border-color:#a4537a; background:#f5d9e6; box-shadow:0 0 0 2px #bc8aa744; }
+.ranking-lane { padding:10px; border:1px solid #d8deca; border-radius:14px; background:#f3f6ec; }
+.quiz-answers .rank-destination { width:100%; min-height:36px; padding:2px 3px 10px; background:transparent; border:0; border-radius:3px; color:#6d7e5d; font-size:11px; letter-spacing:.04em; }
+.ranking-row:empty::after { content:"осы қатарға қойыңыз"; color:#a6ad98; font-size:10px; margin:auto; pointer-events:none; }
+.ranking-status { font-size:11px; color:#8c6c7a; min-height:18px; margin:0; line-height:1.6; }
+.quiz-answers .rank-check { justify-content:center; background:#a55279; color:white; border-color:#93466b; }
+.quiz-answers .rank-check:disabled { background:#ede5e9; border-color:#dfd0d7; color:#9d8792; }
+@media(max-width:650px) {
+ .memory-notebook { grid-template-columns:1fr; gap:18px; }
+ .memory-tabs { grid-template-columns:repeat(3,minmax(0,1fr)); padding:0; gap:6px; }
+ .memory-tabs button { padding:9px 7px; font-size:10px; gap:5px; border-radius:10px; }
+ .memory-tabs button[aria-pressed="true"] { transform:translateY(-2px); }
+ .memory-tabs button span { font-size:9px; }
+ .memory-letter { min-height:365px; padding:35px 24px 21px; }
+ .memory-letter h2 { font-size:26px; }
+ .memory-text { font-size:14px; }
+ .memory-paging .text-button { font-size:11px; }
+ .quiz-answers .rank-name { padding:8px 9px; font-size:11px; }
+}
+
+/* One page at a time, in the same flow as the original letter. */
+.journey-main { min-height:calc(100svh - 90px); padding-top:18px; }
+.page-memories .journey-panel { max-width:670px; }
+.memory-notebook { display:block; }
+.memory-letter { min-height:300px; }
+.chapter-footer { min-height:70px; }
+.chapter-footer #chapterContinue { margin-left:auto; }
+@media(max-width:650px) { .memory-letter { min-height:300px; } }
+
+/* Keep the new chapters as small as the original letter cards. */
+.journey-page .journey-panel { width:min(520px,100%); max-width:520px; padding:24px 27px 20px; border-radius:24px; }
+.journey-header { padding-top:18px; padding-bottom:6px; }
+.journey-main { padding-top:10px; padding-bottom:32px; }
+.chapter-heading h1 { font-size:31px; margin-bottom:12px; }
+.chapter-heading .eyebrow { margin-bottom:12px; }
+.chapter-description { font-size:12px; line-height:1.6; margin-bottom:18px; }
+.journey-panel h2 { font-size:22px; }
+.chapter-footer { margin-top:18px; padding-top:15px; min-height:60px; }
+.chapter-footer .btn { min-height:44px; padding:10px 18px; font-size:12px; }
+.memory-letter { min-height:0; padding:27px 24px 20px; }
+.memory-letter h2 { font-size:24px; margin:17px 0; }
+.memory-text { font-size:13px; line-height:1.85; }
+.memory-signoff { font-size:14px; margin:18px 0 0; }
+.quiz-sheet { padding:17px 18px; border-radius:17px; }
+.quiz-sheet h2 { font-size:21px; margin:12px 0 16px; }
+.quiz-answers button { min-height:44px; padding:10px 12px; font-size:12px; }
+.quiz-sheet .feedback { margin:12px 0; font-size:12px; }
+.envelope-wrap { padding:8px 0; }
+.envelope { width:min(330px,100%); height:190px; margin:8px auto 20px; }
+.envelope-flap { height:108px; }
+.wax-seal { width:44px; height:44px; top:76px; left:calc(50% - 22px); font-size:19px; }
+.envelope-address { font-size:18px; bottom:42px; }
+.letter-paper { padding:25px; }
+.letter-paper p:not(.small-label) { font-size:13px; line-height:1.8; }
+.bouquet-layout { gap:17px; }
+.bouquet-display { height:250px; }
+.bouquet-wrap { width:100px; height:95px; left:calc(50% - 50px); }
+.bouquet-ribbon { bottom:42px; }
+.bouquet-tools h2 { font-size:26px; }
+.flower-choices button { font-size:10px; padding:8px 9px; }
+.date-choices { gap:8px; }
+.date-choices button { padding:18px 8px; }
+.date-choices button > span { font-size:26px; margin-bottom:10px; }
+.date-choices strong { font-size:17px; }
+.date-ticket { margin-top:18px; grid-template-columns:1fr 70px; }
+.date-ticket > div:first-child { padding:18px; }
+.quiet-orbit { width:110px; height:110px; margin-bottom:20px; }
+.quiet-orbit > span { font-size:42px; }
+.quiet-orbit i:nth-of-type(2) { top:77px; left:95px; }
+.quiet-orbit i:nth-of-type(3) { top:100px; left:28px; }
+.last-secret { margin:20px 0 16px; padding:15px 5px; }
+.last-secret summary { font-size:17px; }
+@media(max-width:650px) {
+ .journey-main { padding-inline:24px; }
+ .journey-page .journey-panel { width:min(350px,100%); padding:22px 18px 19px; }
+ .chapter-heading h1 { font-size:27px; }
+ .memory-letter { padding:25px 21px 19px; }
+ .memory-letter h2 { font-size:22px; }
+ .quiz-sheet { padding:15px 12px; }
+ .quiz-sheet h2 { font-size:20px; }
+ .quiz-answers .rank-name { padding:8px; font-size:11px; }
+ .bouquet-display { width:230px; max-width:100%; height:240px; }
+ .chapter-footer { gap:12px; }
+ .chapter-footer .btn { padding-inline:13px; font-size:11px; }
+}
+
+/* Three clicks, then the verse begins. */
+.journey-page .song-panel { width:min(440px,100%); text-align:center; }
+.song-lines { padding:8px 0; }
+.song-intro { margin:12px 0 22px; color:#997888; font:italic 17px/1.6 Georgia,serif; }
+.song-line { margin:14px 0; color:#8b5c73; font:italic 21px/1.5 "Playfair Display",Georgia,serif; animation:letter-reveal .5s ease both; }
+.song-lyric { margin:24px 0 18px; white-space:pre-line; color:#b63877; font:700 25px/1.4 "Playfair Display",Georgia,serif; letter-spacing:.01em; text-wrap:balance; animation:letter-reveal .7s ease both; }
+.song-reveal { min-height:44px; font-size:13px; padding:11px 20px; margin:5px 0 10px; }
+.song-player { margin-top:20px; padding-top:13px; border-top:1px solid #e7cbd7; }
+.song-player audio { display:block; width:100%; height:40px; margin:12px 0; }
+.song-player .small-label { font-size:9px; line-height:1.7; }
+.song-player .local-note:empty { display:none; }
+.song-player .text-button { font-size:11px; }
+@media(max-width:650px) {
+ .journey-page .song-panel { width:min(350px,100%); }
+ .song-line { font-size:19px; }
+ .song-lyric { font-size:22px; }
+}
+
+/* With no top banner, each chapter sits naturally in the meadow. */
+.journey-main { min-height:100svh; padding-block:32px; }
+@media(max-width:650px) { .journey-main { padding-block:28px; } }
+
+/* The surprise starts with only the meadow; any tap reveals the next line. */
+.song-tap-area {
+  position:fixed;
+  inset:0;
+  z-index:5;
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  appearance:none;
+  background:transparent;
+  box-shadow:none;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.page-song .song-tap-area:focus-visible { outline:2px solid #b9799b; outline-offset:-8px; }
+
+/* Start in the center; the heading lets the visitor move the bouquet card. */
+.page-bouquet .journey-main { place-items:center; padding:24px; }
+.page-bouquet .journey-panel { width:min(360px,100%); padding:20px; transform:translate(var(--bouquet-x,0px),var(--bouquet-y,0px)); }
+.page-bouquet .chapter-heading { cursor:grab; touch-action:none; user-select:none; }
+.page-bouquet .is-dragging .chapter-heading { cursor:grabbing; }
+.page-bouquet .chapter-heading:focus-visible { outline:2px solid #c7819f; outline-offset:5px; border-radius:12px; }
+.page-bouquet .chapter-heading .eyebrow { display:none; }
+.page-bouquet .chapter-heading h1 { font-size:25px; }
+.page-bouquet .chapter-description { margin-bottom:14px; }
+.page-bouquet .bouquet-layout { grid-template-columns:125px minmax(0,1fr); gap:15px; }
+.page-bouquet .bouquet-display { width:125px; height:170px; margin:0; }
+.page-bouquet .bouquet-wrap { width:72px; height:70px; left:calc(50% - 36px); bottom:8px; }
+.page-bouquet .bouquet-ribbon { width:72px; left:calc(50% - 36px); bottom:29px; font-size:11px; padding:5px; }
+.page-bouquet #bouquetEmpty { top:27px; padding:0 13px; font-size:12px; }
+.page-bouquet .bouquet-tools { text-align:left; }
+.page-bouquet .bouquet-tools .small-label { display:none; }
+.page-bouquet .bouquet-tools h2 { margin-top:0; font-size:24px; }
+.page-bouquet .bouquet-tools .feedback { font-size:12px; }
+.page-bouquet .chapter-footer { margin-top:14px; padding-top:12px; }
+@media(max-width:650px) {
+ .page-bouquet .journey-main { justify-items:center; padding:16px; }
+ .page-bouquet .journey-panel { padding:17px; }
+ .page-bouquet .chapter-heading h1 { font-size:22px; }
+ .page-bouquet .bouquet-layout { grid-template-columns:110px minmax(0,1fr); gap:12px; }
+ .page-bouquet .bouquet-display { width:110px; height:145px; }
+}
+
+/* A quiet, open farewell on the final page. */
+.farewell-letter { max-width:410px; margin:0 auto 23px; text-align:center; }
+.farewell-letter p { margin:0 0 16px; color:#866574; font-size:13px; line-height:1.9; }
+.farewell-letter .farewell-signature { margin:23px 0 0; color:#b55c87; font:italic 21px/1.5 "Playfair Display",Georgia,serif; }

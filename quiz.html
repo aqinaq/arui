@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="kk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7a8ca"><title>Мені қаншалықты білесіз? · Гүл алқабы</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="journey.css"><link rel="stylesheet" href="quiz-coupon.css"><link rel="stylesheet" href="memory-themes.css"><link rel="stylesheet" href="memory-letters.css"><script src="background-music.js" defer></script></head>
+<body class="journey-page page-quiz" data-journey="quiz"><a class="skip-link" href="#journeyContent">Мазмұнға өту</a>
+<main class="journey-main" id="journeyContent"><section class="journey-panel"><header class="chapter-heading" id="quizHeading"><p class="eyebrow">ШАҒЫН КВИЗ</p><h1>Мені қаншалықты<br>білесіз?<br><em>Бір жылы күлімсіреу.</em></h1><p class="chapter-description">Төрт сұрақ пен бір рейтинг. Кей жауапқа мұқият қарау керек :)</p></header>
+<section id="quizSheet" class="quiz-sheet" aria-labelledby="quizQuestion">
+  <div class="quiz-meta"><span id="quizCount">01 / 05</span><span>асықпай жауап беріңіз ♡</span></div>
+  <progress id="quizProgress" max="5" value="0" aria-label="Квиз барысы"></progress>
+  <h2 id="quizQuestion"></h2><div id="quizAnswers" class="quiz-answers"></div>
+  <p id="quizFeedback" class="feedback" aria-live="polite"></p>
+  <button class="btn btn-yes" id="quizNext" hidden>Келесі сұрақ →</button>
+</section><section id="quizCoupon" class="quiz-coupon-reveal" hidden tabindex="-1" aria-labelledby="couponTitle">
+  <p class="coupon-congratulations">Тамаша! Бұл сізге ♡</p>
+  <article class="care-coupon">
+    <div class="coupon-main">
+      <div class="coupon-edition"><span>КІШКЕНТАЙ ҚАМҚОРЛЫҚ</span><span>№ 001</span></div>
+      <svg class="coupon-illustration" viewBox="0 0 360 245" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="coupon-shell" cx=".25" cy=".18" r=".9"><stop stop-color="#ffe9ee"/><stop offset=".4" stop-color="#f49ab5"/><stop offset="1" stop-color="#ba4d80"/></radialGradient>
+          <linearGradient id="coupon-gold" x2=".8" y2="1"><stop stop-color="#fff1c3"/><stop offset=".45" stop-color="#e3bd79"/><stop offset="1" stop-color="#b88a52"/></linearGradient>
+          <linearGradient id="coupon-ribbon" x2=".8" y2="1"><stop stop-color="#ffd0e1"/><stop offset=".5" stop-color="#db79a3"/><stop offset="1" stop-color="#ab4b7b"/></linearGradient>
+          <radialGradient id="coupon-clock" cx=".35" cy=".25"><stop stop-color="#fffef5"/><stop offset="1" stop-color="#f3e7d4"/></radialGradient>
+          <filter id="coupon-shadow" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="5" stdDeviation="3" flood-color="#8e5c76" flood-opacity=".2"/></filter>
+        </defs>
+        <ellipse cx="180" cy="215" rx="100" ry="11" fill="#d7aec3" opacity=".16"/>
+        <circle cx="181" cy="119" r="101" fill="#f9e5ed"/>
+        <circle cx="181" cy="119" r="91" fill="none" stroke="#fffaf6" stroke-width="2" stroke-dasharray="2 8"/>
+        <g class="coupon-stars" fill="url(#coupon-gold)" stroke="#fff7e1" stroke-width="1.5">
+          <path d="M64 60q0 13-12 14 12 0 12 14 0-14 12-14-12-1-12-14Z"/>
+          <path d="M291 89q0 11-10 12 10 0 10 12 0-12 10-12-10-1-10-12Z"/>
+          <path d="M268 33q0 9-8 10 8 0 8 10 0-10 8-10-8-1-8-10Z"/>
+          <circle cx="82" cy="157" r="3"/><circle cx="273" cy="170" r="3"/>
+        </g>
+        <g class="coupon-mascot" filter="url(#coupon-shadow)">
+          <!-- A pearly toy lobster, a little wink to the final quiz question. -->
+          <g fill="url(#coupon-shell)" stroke="#fff0f3" stroke-width="2.5" stroke-linejoin="round">
+            <path d="M161 170q-16 23-31 23 1 20 21 15l28-18 19 20q24 6 30-10-23-1-31-28Z"/>
+            <ellipse cx="181" cy="146" rx="34" ry="51"/>
+            <path d="M154 108Q128 96 114 73l-11 8q12 35 44 46Z"/>
+            <path d="M207 108q26-12 40-35l11 8q-12 35-44 46Z"/>
+            <g class="coupon-claw-left"><path d="M110 84C73 91 68 48 85 35l15 25 7-29c29 6 32 48 3 53Z"/><path d="m100 60 10 16" fill="none" stroke="#c56c91"/></g>
+            <g class="coupon-claw-right"><path d="M249 84c37 7 42-36 25-49l-15 25-7-29c-29 6-32 48-3 53Z"/><path d="m259 60-10 16" fill="none" stroke="#c56c91"/></g>
+          </g>
+          <path d="M172 82q-11-32-29-26m47 26q11-32 29-26" fill="none" stroke="#bc7197" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="143" cy="56" r="4" fill="#e9ba85"/><circle cx="219" cy="56" r="4" fill="#e9ba85"/>
+          <ellipse cx="181" cy="97" rx="33" ry="30" fill="url(#coupon-shell)" stroke="#fff0f3" stroke-width="2.5"/>
+          <path d="M164 95q5-7 10 0m15 0q5-7 10 0m-23 11q6 5 12 0" fill="none" stroke="#88556c" stroke-width="2.5" stroke-linecap="round"/>
+          <ellipse cx="161" cy="104" rx="6" ry="3" fill="#e26f99" opacity=".6"/><ellipse cx="201" cy="104" rx="6" ry="3" fill="#e26f99" opacity=".6"/>
+          <g class="coupon-pocket-watch">
+            <circle cx="181" cy="128" r="8" fill="none" stroke="url(#coupon-gold)" stroke-width="5"/>
+            <circle cx="181" cy="165" r="37" fill="url(#coupon-gold)" stroke="#fff4df" stroke-width="2"/>
+            <circle cx="181" cy="165" r="30" fill="url(#coupon-clock)"/>
+            <circle cx="181" cy="165" r="25" fill="none" stroke="#caa977" stroke-width="2" stroke-dasharray="1 12"/>
+            <g class="coupon-clock-hand"><path d="M181 145v20l12 6" fill="none" stroke="#b86a8e" stroke-width="3" stroke-linecap="round"/></g>
+            <circle cx="181" cy="165" r="3" fill="#d49968"/>
+          </g>
+          <path d="M131 180q50 20 100 0l-7 24q-43 14-86 0Z" fill="url(#coupon-ribbon)" stroke="#fff0f6" stroke-width="2"/>
+          <path d="M177 190c-7-9-15 1 4 10 19-9 11-19 4-10l-4 3Z" fill="#fff3ee"/>
+        </g>
+      </svg>
+      <p class="coupon-kicker">ӨЗІҢІЗГЕ АРНАЛҒАН УАҚЫТ</p>
+      <h2 id="couponTitle">Өмірден<br><em>ләззат алыңыз.</em></h2>
+      <p class="coupon-promise">Омарды <strong>100 сағат</strong><br>мен қараймын ♡</p>
+      <div class="coupon-signoff"><span>шын жүректен</span><span class="coupon-seal" aria-hidden="true">♡</span></div>
+      <p class="coupon-fineprint">Қазіргі мүмкіндігім — әзірге осы ♡</p>
+    </div>
+    <div class="coupon-stub"><span class="coupon-stub-label">СІЗДІҢ КУПОНЫҢЫЗ</span><strong>100</strong><span class="coupon-hours">сағат</span><span class="coupon-stub-heart" aria-hidden="true">♡</span><div class="coupon-barcode" aria-hidden="true"></div><span class="coupon-number">OMAR · 001</span></div>
+  </article>
+  <p id="couponScore" class="coupon-score"></p>
+</section>
+<button class="text-button" id="quizRestart" hidden>Тағы бір рет ойнау</button>
+<footer class="chapter-footer"><a class="chapter-back" href="sarange.html">← Артқа</a><a class="btn btn-yes" id="chapterContinue" href="gentle.html" hidden>Келесі бет →</a></footer></section></main><script src="memory-letters.js"></script><script src="meadow.js"></script><script src="journey.js"></script></body></html>

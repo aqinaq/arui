@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="kk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7a8ca"><title>Аңсайды жаным · Гүл алқабы</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="journey.css"><link rel="stylesheet" href="memory-themes.css"><link rel="stylesheet" href="memory-letters.css"><script src="background-music.js" defer></script></head>
+<body class="journey-page page-song" data-journey="song"><button type="button" class="song-tap-area" id="revealSong" aria-label="Бірінші жолды ашу"></button>
+<main class="journey-main" id="journeyContent"><section class="journey-panel song-panel" aria-label="Сізге арналған өлең жолдары" hidden>
+  <div class="song-lines" id="songLines" aria-live="polite" aria-relevant="additions text"></div>
+  <div class="song-player" id="songPlayer" hidden>
+    <p class="small-label">ҚАЙРАТ НҰРТАС · АҢСАЙДЫ ЖАНЫМ</p>
+    <audio id="longingAudio" hidden preload="auto" aria-label="Қайрат Нұртас — Аңсайды жаным">
+      <source src="assets/audio/ansaidy-zhanym.m4a#t=52" type="audio/mp4">
+      Браузеріңіз аудионы ойнатуды қолдамайды.
+    </audio>
+    <p class="local-note" id="songStatus" role="status"></p>
+    <button class="text-button" id="replaySong" type="button">Осы жерден қайта тыңдау ↺</button>
+  </div>
+  <footer class="chapter-footer" id="songNavigation" hidden><a class="chapter-back" href="letter.html">← Артқа</a><a class="btn btn-yes" id="chapterContinue" href="rating.html" hidden>Келесі бет →</a></footer>
+</section></main><script src="memory-letters.js"></script><script src="meadow.js"></script><script src="journey.js"></script><script src="song.js"></script></body></html>

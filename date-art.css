@@ -1,0 +1,146 @@
+/* Little animated keepsakes, drawn to match the flower garden. */
+.page-date .journey-panel { width:min(620px,100%); }
+.page-date .date-choices { gap:10px; }
+.page-date .date-choices button {
+  position:relative;
+  padding:12px 7px 19px;
+  border:1px solid #ead0da;
+  border-radius:65px 65px 22px 22px;
+  background:linear-gradient(155deg,#fffef9 30%,#fff0f5);
+  box-shadow:inset 0 2px 0 #fff,0 5px 14px #98697e0b;
+  transition:transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s,background .35s;
+}
+.page-date .date-choices button:focus-visible { outline:2px solid #b85083; outline-offset:4px; }
+.page-date .date-choices button[aria-pressed="true"] {
+  background:linear-gradient(150deg,#fff6fa,#f7d4e4);
+  box-shadow:inset 0 2px 0 #fff,0 10px 20px #a44e7a21;
+  border-color:#ca7ca1;
+  transform:translateY(-5px) rotate(-1deg);
+}
+.date-art { display:block; width:100%; max-width:155px; height:auto; margin:0 auto 9px; overflow:visible; }
+.sticker-body { filter:drop-shadow(0 5px 3px #80526728); animation:sticker-float 5s ease-in-out infinite; transform-origin:90px 120px; }
+.art-cinema .sticker-body { animation-delay:-1.4s; }
+.art-walk .sticker-body { animation-delay:-2.6s; }
+.art-picnic .sticker-body { animation-delay:-3.7s; }
+.art-shadow { transform-origin:90px 143px; animation:sticker-shadow 5s ease-in-out infinite; }
+.art-sparkles { transform-origin:90px 80px; animation:sticker-sparkle 3.6s ease-in-out infinite; }
+.coffee-steam path { animation:coffee-steam 3s ease-in-out infinite; }
+.coffee-steam path:nth-child(2) { animation-delay:-1s; }
+.coffee-steam path:nth-child(3) { animation-delay:-2s; }
+.cinema-reel { transform-origin:79px 72px; animation:cinema-turn 18s linear infinite; }
+.film-tail { animation:film-flow 2s linear infinite; }
+.walk-stem { animation:flower-sway 4s ease-in-out infinite; }
+.stem-left { transform-origin:62px 127px; }
+.stem-right { transform-origin:125px 129px; animation-delay:-1.8s; }
+.walk-butterfly { transform-origin:95px 47px; animation:butterfly-dance 3.6s ease-in-out infinite; }
+.picnic-lid { transform-origin:47px 85px; animation:basket-peek 5s ease-in-out infinite; }
+.picnic-treats { animation:basket-treats 5s ease-in-out infinite; }
+.date-choices button[aria-pressed="true"] .art-sparkles { animation-duration:1.8s; }
+.date-choices button[aria-pressed="true"] .cinema-reel { animation-duration:7s; }
+.date-choices button[aria-pressed="true"] .walk-butterfly { animation-duration:2.2s; }
+@media (hover:hover) {
+  .page-date .date-choices button:hover { transform:translateY(-5px); box-shadow:0 12px 22px #a44e7a20; }
+  .date-choices button:hover .art-sparkles { animation-duration:1.4s; }
+}
+@keyframes sticker-float { 0%,100% { transform:translateY(0) rotate(-2deg); } 50% { transform:translateY(-4px) rotate(2deg); } }
+@keyframes sticker-shadow { 50% { transform:scaleX(.88); opacity:.65; } }
+@keyframes sticker-sparkle { 0%,100% { opacity:.4; transform:scale(.9); } 50% { opacity:1; transform:scale(1.05); } }
+@keyframes coffee-steam { 0% { opacity:0; transform:translateY(5px); } 35% { opacity:.9; } 100% { opacity:0; transform:translateY(-10px); } }
+@keyframes cinema-turn { to { transform:rotate(360deg); } }
+@keyframes film-flow { to { stroke-dashoffset:-14; } }
+@keyframes flower-sway { 0%,100% { transform:rotate(-3deg); } 50% { transform:rotate(4deg); } }
+@keyframes butterfly-dance { 0%,100% { transform:translate(0,0) rotate(-10deg) scaleX(1); } 40% { transform:translate(7px,-7px) rotate(15deg) scaleX(.6); } 70% { transform:translate(-3px,-4px) rotate(-5deg) scaleX(.9); } }
+@keyframes basket-peek { 0%,20%,100% { transform:rotate(0); } 45%,70% { transform:rotate(-14deg) translateY(-3px); } }
+@keyframes basket-treats { 0%,20%,100% { transform:translateY(0); } 45%,70% { transform:translateY(-6px); } }
+@media(max-width:650px) {
+  .page-date .date-choices { gap:12px; }
+  .page-date .date-choices button { padding:8px 9px 16px; }
+  .date-art { max-width:132px; margin-bottom:4px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .page-date .date-art * { animation:none !important; }
+  .page-date .date-choices button { transition:none; }
+}
+
+/* Collectible invitations: foil edge, perforation, a moving keepsake and an ink seal. */
+.page-date .date-ticket {
+  --ticket-paper:#fff3e6; --ticket-soft:#efd5c8; --ticket-ink:#885c50; --ticket-accent:#bd7190; --stub-width:108px;
+  display:grid; grid-template-columns:minmax(0,1fr) var(--stub-width);
+  margin-top:24px; border:1px solid color-mix(in srgb,var(--ticket-accent) 45%,white);
+  border-radius:18px; background:var(--ticket-paper); color:var(--ticket-ink);
+  box-shadow:0 14px 28px #84556820,inset 0 1px 0 #fff;
+  isolation:isolate; transform-origin:50% 0;
+}
+.page-date .date-ticket[data-plan="cinema"] { --ticket-paper:#f8edf8; --ticket-soft:#dfc7e4; --ticket-ink:#76516f; --ticket-accent:#a8619a; }
+.page-date .date-ticket[data-plan="walk"] { --ticket-paper:#f2f6e8; --ticket-soft:#d2dfbd; --ticket-ink:#5e7258; --ticket-accent:#a46585; }
+.page-date .date-ticket[data-plan="picnic"] { --ticket-paper:#fff2ef; --ticket-soft:#f0cdd2; --ticket-ink:#8f5d66; --ticket-accent:#c16c87; }
+.page-date .date-ticket::before,.page-date .date-ticket::after {
+  content:""; position:absolute; right:calc(var(--stub-width) - 8px); z-index:3;
+  width:16px; height:8px; background:#fff5f7;
+  border:1px solid color-mix(in srgb,var(--ticket-accent) 40%,white);
+}
+.page-date .date-ticket::before { top:-1px; border-top:0; border-radius:0 0 16px 16px; }
+.page-date .date-ticket::after { bottom:-1px; border-bottom:0; border-radius:16px 16px 0 0; }
+.page-date .date-ticket > .ticket-body {
+  min-width:0; padding:22px 20px 17px;
+  border-radius:17px 0 0 17px;
+  background:radial-gradient(circle,var(--ticket-soft) .7px,transparent 1px) 0 0/12px 12px;
+}
+.ticket-topline { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:20px; }
+.page-date .ticket-topline .small-label { margin:0; color:var(--ticket-accent); font-size:8px; letter-spacing:.12em; line-height:1.5; }
+.ticket-serial { flex-shrink:0; font:8px/1.4 monospace; color:var(--ticket-ink); opacity:.65; }
+.page-date .date-ticket .ticket-invitation { margin:0; font:italic 12px/1.5 Georgia,serif; color:var(--ticket-accent); }
+.page-date .date-ticket h2 { margin:10px 0 12px; color:var(--ticket-ink); font-size:26px; line-height:1.15; letter-spacing:-.04em; }
+.page-date .date-ticket #ticketDetail { margin:0; color:var(--ticket-ink); font-size:12px; line-height:1.7; }
+.ticket-bottom { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:21px; }
+.page-date .date-ticket .ticket-date { margin:0; font-size:12px; color:var(--ticket-ink); }
+.ticket-date span { display:block; font:7px/1.6 "DM Sans",sans-serif; letter-spacing:.12em; opacity:.65; margin-bottom:5px; }
+.page-date .ticket-stamp {
+  flex-shrink:0; padding:8px 12px; border:2px solid var(--ticket-accent); color:var(--ticket-accent);
+  font:italic 17px/1 Georgia,serif; border-radius:50%; transform:rotate(-13deg);
+  outline:1px solid color-mix(in srgb,var(--ticket-accent) 35%,transparent); outline-offset:-5px;
+  text-shadow:.5px .4px #ffffff55;
+}
+.ticket-barcode { width:82px; height:14px; margin-top:18px; opacity:.35; background:repeating-linear-gradient(90deg,var(--ticket-ink) 0 1px,transparent 1px 3px,var(--ticket-ink) 3px 5px,transparent 5px 7px,var(--ticket-ink) 7px 8px,transparent 8px 12px); }
+.page-date .ticket-stub {
+  min-width:0; position:relative; padding:20px 6px 18px; gap:0;
+  border-left:1.5px dashed color-mix(in srgb,var(--ticket-accent) 45%,transparent);
+  border-radius:0 17px 17px 0; color:var(--ticket-ink);
+  background:linear-gradient(160deg,#ffffff66,var(--ticket-soft));
+  transform-origin:0 50%;
+}
+.page-date .ticket-stub-label { font:8px/1.5 "DM Sans",sans-serif; letter-spacing:.15em; }
+.ticket-art { width:100%; margin:12px 0 0; }
+.ticket-art .date-art { width:112%; max-width:none; margin:0 -6% -3px; }
+.page-date .ticket-stub strong { font:48px/.95 "Playfair Display",Georgia,serif; margin:0; }
+.page-date .ticket-stub-caption { font:italic 12px/1.8 Georgia,serif; letter-spacing:0; }
+.page-date .ticket-stub-hearts { margin-top:18px; color:var(--ticket-accent); font-size:17px; letter-spacing:4px; }
+.ticket-shimmer { pointer-events:none; position:absolute; inset:0; overflow:hidden; border-radius:17px; }
+.ticket-shimmer::before { content:""; position:absolute; inset:0 0 auto; height:3px; background:linear-gradient(100deg,var(--ticket-accent),#fff1bb,#edc0e8,#d3e6d4,var(--ticket-accent)); }
+.ticket-shimmer::after { content:""; position:absolute; top:-20%; left:-60%; width:40%; height:140%; background:linear-gradient(90deg,transparent,#fff9 .5%,#ffffff88 45%,transparent); transform:skewX(-22deg) translateX(-150%); }
+.date-ticket.is-issued { animation:ticket-unfold .7s cubic-bezier(.2,.8,.2,1) both; }
+.is-issued .ticket-stub { animation:ticket-stub-unfold .8s cubic-bezier(.2,.8,.2,1) both; }
+.is-issued .ticket-stamp { animation:ticket-ink-stamp .65s .32s cubic-bezier(.2,.8,.3,1) both; }
+.is-issued .ticket-shimmer::after { animation:ticket-foil-pass 1.4s .35s ease-in-out both; }
+.date-ticket[data-plan="cinema"] .ticket-body { background:repeating-linear-gradient(90deg,var(--ticket-soft) 0 7px,transparent 7px 13px) 14px 7px/calc(100% - 28px) 4px no-repeat; }
+.date-ticket[data-plan="walk"] .ticket-body { background:radial-gradient(ellipse at 0 100%,#d2dfbd88,transparent 60%),radial-gradient(circle at 86% 14%,#e9bace55 0 15px,transparent 16px); }
+.date-ticket[data-plan="picnic"] .ticket-stub { background:repeating-linear-gradient(0deg,#fff6 0 10px,transparent 10px 20px),repeating-linear-gradient(90deg,#fff6 0 10px,transparent 10px 20px),var(--ticket-soft); }
+.date-ticket[data-plan="coffee"] .ticket-body { background:radial-gradient(ellipse at 100% 100%,#efd5c866,transparent 65%); }
+@keyframes ticket-unfold { from { opacity:0; transform:perspective(800px) rotateX(-14deg) translateY(-12px) scale(.97); } to { opacity:1; transform:none; } }
+@keyframes ticket-stub-unfold { from { transform:perspective(600px) rotateY(-48deg); } to { transform:none; } }
+@keyframes ticket-ink-stamp { 0% { opacity:0; transform:rotate(-24deg) scale(1.8); } 55% { opacity:1; transform:rotate(-11deg) scale(.93); } 100% { opacity:1; transform:rotate(-13deg) scale(1); } }
+@keyframes ticket-foil-pass { to { transform:skewX(-22deg) translateX(480%); } }
+@media(max-width:650px) {
+  .page-date .date-ticket { --stub-width:78px; }
+  .page-date .date-ticket > .ticket-body { padding:20px 13px 15px; }
+  .ticket-topline { flex-wrap:wrap; gap:4px; margin-bottom:15px; }
+  .page-date .date-ticket h2 { font-size:23px; }
+  .ticket-bottom { flex-wrap:wrap; gap:15px; }
+  .page-date .ticket-stamp { font-size:16px; }
+  .page-date .ticket-stub { padding-inline:3px; }
+  .page-date .ticket-stub strong { font-size:40px; }
+  .page-date .ticket-stub-label { font-size:7px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .date-ticket.is-issued,.is-issued .ticket-stub,.is-issued .ticket-stamp,.is-issued .ticket-shimmer::after { animation:none !important; }
+}

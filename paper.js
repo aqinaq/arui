@@ -2,9 +2,9 @@ const pageName = window.location.pathname.split("/").pop() || "index.html";
 const backTargets = {
   "index.html": "index.html",
   "yes.html": "index.html",
-  "rating.html": "yes.html",
+  "rating.html": "song.html",
   "sarange.html": "rating.html",
-  "gentle.html": "sarange.html",
+  "gentle.html": "quiz.html",
   "improve.html": "rating.html",
   "ten.html": "rating.html",
   "error67.html": "rating.html",
@@ -135,3 +135,55 @@ if (surface && !surface.querySelector(".tape-handle")) {
   handle.addEventListener("pointercancel", stopDragging);
   window.addEventListener("resize", () => movePaper(x, y));
 }
+
+// Hidden notes move independently from the letter in front of them.
+document.querySelectorAll('.secret-note').forEach(note => {
+  const handle = document.createElement('button');
+  handle.type = 'button';
+  handle.className = 'note-drag-handle';
+  handle.textContent = '♡';
+  handle.setAttribute('aria-label', 'Жазбаны жылжыту: ұстап тартыңыз немесе бағыт пернелерін қолданыңыз. Home — бастапқы орны.');
+  note.append(handle);
+  note.classList.add('movable-note');
+  let x = 18, y = 10, press = null;
+
+  function moveNote(nextX, nextY) {
+    const maxX = Math.max(18, Math.min(520, (window.innerWidth - note.offsetWidth) / 2 - 12));
+    const maxY = Math.max(10, Math.min(360, (window.innerHeight - note.offsetHeight) / 2 - 12));
+    x = Math.max(-maxX, Math.min(maxX, nextX));
+    y = Math.max(-maxY, Math.min(maxY, nextY));
+    note.style.setProperty('--note-x', `${x}px`);
+    note.style.setProperty('--note-y', `${y}px`);
+  }
+  note.addEventListener('pointerdown', event => {
+    if (!event.isPrimary || event.button !== 0 || press) return;
+    if (event.target.closest('a,input,textarea,select,button') && event.target !== handle) return;
+    event.preventDefault();
+    press = { id: event.pointerId, x: event.clientX, y: event.clientY, originX: x, originY: y };
+    note.classList.add('is-note-dragging');
+    note.setPointerCapture(event.pointerId);
+  });
+  note.addEventListener('pointermove', event => {
+    if (!press || press.id !== event.pointerId) return;
+    moveNote(press.originX + event.clientX - press.x, press.originY + event.clientY - press.y);
+  });
+  function endDrag(event) {
+    if (!press || press.id !== event.pointerId) return;
+    press = null;
+    note.classList.remove('is-note-dragging');
+    if (note.hasPointerCapture(event.pointerId)) note.releasePointerCapture(event.pointerId);
+  }
+  note.addEventListener('pointerup', endDrag);
+  note.addEventListener('pointercancel', endDrag);
+  note.addEventListener('lostpointercapture', endDrag);
+  handle.addEventListener('keydown', event => {
+    const step = event.shiftKey ? 30 : 10;
+    const directions = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] };
+    if (event.key === 'Home') { event.preventDefault(); moveNote(18, 10); }
+    else if (directions[event.key]) {
+      event.preventDefault();
+      const [dx, dy] = directions[event.key]; moveNote(x + dx, y + dy);
+    }
+  });
+  window.addEventListener('resize', () => moveNote(x, y));
+});

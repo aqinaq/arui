@@ -1,0 +1,61 @@
+/* A keepsake ticket, with a tiny lobster holding time for you. */
+.quiz-coupon-reveal { max-width:620px; margin:0 auto; outline:none; }
+.coupon-congratulations { margin:0 0 22px; text-align:center; color:#9b5676; font:italic 24px/1.3 "Playfair Display",Georgia,serif; }
+.care-coupon { --coupon-ink:#754558; position:relative; display:grid; grid-template-columns:minmax(0,1fr) 112px; color:var(--coupon-ink); border-radius:22px; background:#fff9eb; filter:drop-shadow(0 17px 18px #7b465626); animation:coupon-unfold .9s cubic-bezier(.16,.8,.2,1) both; isolation:isolate; }
+.care-coupon::before { content:""; position:absolute; inset:7px; z-index:2; border:1px solid #c99b6a66; border-radius:16px; pointer-events:none; }
+.coupon-main { position:relative; padding:23px 26px 19px; overflow:hidden; border-radius:22px 0 0 22px; background:radial-gradient(circle at 1px 1px,#c88ba317 1px,transparent 1.5px) 0 0/13px 13px,linear-gradient(135deg,#fffcf0,#fff7ef 65%,#f9e1e8); text-align:center; }
+.coupon-main::after { content:""; position:absolute; inset:-60%; background:linear-gradient(110deg,transparent 40%,#fff9 49%,transparent 58%); transform:translateX(-70%); animation:coupon-foil 1.8s .35s ease-out both; pointer-events:none; }
+.coupon-edition { display:flex; justify-content:space-between; gap:8px; text-align:left; color:#ad7c8d; font-size:7px; letter-spacing:.16em; }
+.coupon-illustration { display:block; width:min(280px,110%); height:auto; margin:4px auto -4px; overflow:visible; }
+.coupon-kicker { margin:0 0 10px; font-size:7px; letter-spacing:.18em; color:#b27b8b; }
+.page-quiz .care-coupon h2 { margin:0; color:#754558; font:700 36px/1.08 "Playfair Display",Georgia,serif; letter-spacing:-.04em; }
+.care-coupon h2 em { color:#bd6086; }
+.coupon-promise { margin:17px 0 11px; font-size:16px; line-height:1.6; color:#8c5e70; }
+.coupon-promise strong { font-weight:700; color:#b4547e; }
+.coupon-signoff { display:flex; align-items:center; justify-content:center; gap:12px; color:#ac7890; font:italic 14px Georgia,serif; }
+.coupon-seal { display:grid; place-items:center; width:34px; height:34px; border:3px double #bf789c; border-radius:50%; transform:rotate(-13deg); font-size:23px; animation:coupon-stamp .6s .45s both; }
+.coupon-fineprint { margin:12px 0 0; color:#ae9197; font-size:8px; line-height:1.6; }
+.coupon-stub { position:relative; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:9px; padding:24px 12px; border-left:2px dashed #c693a87d; border-radius:0 22px 22px 0; background:repeating-linear-gradient(45deg,#edc4d02b 0 1px,transparent 1px 7px),linear-gradient(160deg,#f7dce4,#e9b8cd); transform-origin:left center; animation:coupon-stub-fold 1s .12s cubic-bezier(.2,.8,.2,1) both; }
+.coupon-stub::before,.coupon-stub::after { content:""; position:absolute; left:-10px; width:18px; height:18px; border-radius:50%; background:#fff5f6; }
+.coupon-stub::before { top:-9px; }.coupon-stub::after { bottom:-9px; }
+.coupon-stub-label { writing-mode:vertical-rl; font-size:8px; letter-spacing:.18em; color:#a56a83; margin-bottom:20px; }
+.coupon-stub strong { font:700 45px/1 "Playfair Display",Georgia,serif; letter-spacing:-.07em; color:#a8507c; }
+.coupon-hours { font:italic 18px Georgia,serif; color:#a76782; }
+.coupon-stub-heart { margin:7px 0 15px; font:32px Georgia,serif; color:#bb7293; }
+.coupon-barcode { width:62px; height:30px; opacity:.45; background:repeating-linear-gradient(90deg,#89506c 0 1px,transparent 1px 3px,#89506c 3px 5px,transparent 5px 7px,#89506c 7px 8px,transparent 8px 12px); }
+.coupon-number { font-size:7px; letter-spacing:.13em; color:#9f6b82; }
+.coupon-score { text-align:center; font-size:10px; color:#a17c89; margin:19px 0 0; }
+.page-quiz.quiz-complete #quizRestart { display:block; margin:10px auto 0; font-size:10px; }
+.coupon-mascot { transform-origin:181px 200px; animation:coupon-mascot-float 4.8s ease-in-out infinite; }
+.coupon-claw-left { transform-origin:113px 82px; animation:coupon-claw-wave 3.5s ease-in-out infinite; }
+.coupon-claw-right { transform-origin:249px 82px; animation:coupon-claw-wave 3.5s -1.75s ease-in-out infinite reverse; }
+.coupon-clock-hand { transform-origin:181px 165px; animation:coupon-clock-tick 12s linear infinite; }
+.coupon-stars { transform-origin:180px 120px; animation:coupon-star-glow 3s ease-in-out infinite; }
+@keyframes coupon-unfold { from { opacity:0; transform:perspective(900px) translateY(35px) rotateX(15deg) rotate(-3deg) scale(.9); } to { opacity:1; transform:none; } }
+@keyframes coupon-stub-fold { from { transform:perspective(600px) rotateY(-75deg); } to { transform:none; } }
+@keyframes coupon-foil { to { transform:translateX(70%); } }
+@keyframes coupon-stamp { from { opacity:0; transform:scale(1.8) rotate(7deg); } to { opacity:1; transform:scale(1) rotate(-13deg); } }
+@keyframes coupon-mascot-float { 50% { transform:translateY(-5px) rotate(1.5deg); } }
+@keyframes coupon-claw-wave { 50% { transform:rotate(-9deg); } }
+@keyframes coupon-clock-tick { to { transform:rotate(360deg); } }
+@keyframes coupon-star-glow { 50% { opacity:.5; transform:scale(.96); } }
+@media(max-width:540px) {
+  .page-quiz.quiz-complete .journey-panel { padding:23px 15px; }
+  .coupon-congratulations { font-size:21px; margin-bottom:18px; }
+  .care-coupon { grid-template-columns:minmax(0,1fr) 76px; }
+  .coupon-main { padding:21px 13px 18px; }
+  .coupon-edition { font-size:6px; letter-spacing:.08em; }
+  .coupon-illustration { width:100%; margin:9px auto 4px; }
+  .page-quiz .care-coupon h2 { font-size:28px; }
+  .coupon-kicker { font-size:6px; letter-spacing:.11em; }
+  .coupon-promise { font-size:14px; }
+  .coupon-stub { padding-inline:8px; }
+  .coupon-stub strong { font-size:34px; }
+  .coupon-stub-label { font-size:7px; }
+  .coupon-barcode { width:44px; }
+  .coupon-fineprint { font-size:8px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .quiz-coupon-reveal *,.quiz-coupon-reveal *::after { animation:none !important; }
+  .coupon-main::after { display:none; }
+}

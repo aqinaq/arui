@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="kk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#ffdeeb" />
-    <meta name="description" content="A tiny, heartfelt apology." />
-    <title>A tiny apology 💌</title>
+    <meta name="theme-color" content="#f7a8ca" />
+    <meta name="description" content="мен сізден иіліп тұрып кешірім сұрағым келеді." />
+    <title>to my dear zhengeshe.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-  </head>
+  <link rel="stylesheet" href="memory-themes.css"><link rel="stylesheet" href="memory-letters.css"><script src="background-music.js" defer></script></head>
   <body class="apology-page">
     <div class="noise" aria-hidden="true"></div>
     <div class="floaties" aria-hidden="true">
@@ -21,51 +21,49 @@
     </div>
 
     <main class="stage">
-      <aside class="secret-note" aria-label="Hidden note">
+      <aside class="secret-note" aria-label="сізді еске алған сайын өзімді қоярға жер таппаймын">
         <span class="secret-note-heart" aria-hidden="true">♡</span>
-        <p class="eyebrow">P.S. ONE MORE THING</p>
-        <h2>I didn’t know<br />how to begin.</h2>
+        <p class="eyebrow">to my dear zhengeshe.</p>
+        <h2>мені кешіріңізші.</h2>
         <p>
-          This little website can’t undo anything. I only made it because I needed you to know:
-          I’m sorry, I miss you, and whenever you’re ready, I would really like to talk.
+          сізді еске алған сайын өзімді қоярға жер таппаймын, сіздің жылы сөздеріңіз бен жарқын көңіліңізді сағындым.
         </p>
-        <span class="secret-signoff">With love, always ♡</span>
+        <span class="secret-signoff">сіз мені кешіре аласыз ба?</span>
       </aside>
 
       <section class="card apology-card draggable-card" id="apologyCard" aria-labelledby="apology-title">
-        <button class="tape tape-handle" id="dragHandle" type="button" aria-label="Hold and drag to move the letter">
-          <span>pull me</span>
+        <button class="tape tape-handle" id="dragHandle" type="button" aria-label="Хатты жылжыту">
+          <span>♡</span>
         </button>
-        <p class="eyebrow">TO MY DEAR SISTER-IN-LAW</p>
+        <p class="eyebrow">to my dear zhengeshe.</p>
 
-        <button class="heart-seal" id="heartSeal" aria-label="Tap for a little surprise">
+        <button class="heart-seal" id="heartSeal" aria-label="Жүрек">
           <span>♥</span>
         </button>
 
-        <h1 id="apology-title">I’m truly,<br /><em>deeply</em> sorry.</h1>
+        <h1 id="apology-title">мен сізден иіліп тұрып <em>кешірім сұрағым келеді.</em></h1>
         <p class="message">
-          When I realized that I had hurt you, I felt so guilty that I didn’t know how to text you.
-          But staying silent was wrong too. I have no excuses—the only honest thing I can say is: I’m sorry.
+          бұл жағдай менің жүрегімді қатты жаралады, жай ғана бір зат үшін екеуміздің қарым қатынасымызды бұзып алу мен үшін өте ауыр болды, мен сізден қалай кешірім сұрарымды білмеймін.
         </p>
 
         <div class="promise">
           <span class="promise-icon" aria-hidden="true">✿</span>
-          <p><strong>I want you to know:</strong> I think of you in so many little moments. I miss you, and I’m truly sorry for taking your kindness for granted.</p>
+          <p>мен сондай greedy болыппын, мені кешіріңізші. сізді еске алған сайын өзімді қоярға жер таппаймын, сіздің жылы сөздеріңіз бен жарқын көңіліңізді сағындым.</p>
         </div>
 
-        <p class="question">Can you forgive me?</p>
+        <p class="question">сіз мені кешіре аласыз ба?</p>
 
         <div class="button-playground" id="buttonPlayground">
           <a class="btn btn-yes" href="yes.html" id="yesButton">
-            Yes, I forgive you <span aria-hidden="true">♡</span>
+            иә әрине <span aria-hidden="true">♡</span>
           </a>
-          <button class="btn btn-no" id="noButton" type="button">Nope</button>
+          <button class="btn btn-no" id="noButton" type="button">жоқ</button>
         </div>
-        <p class="hint" id="hint" aria-live="polite">Choose wisely… one answer is a little shy.</p>
+        <p class="hint" id="hint" aria-live="polite"></p>
       </section>
     </main>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script src="paper.js"></script><script src="script.js"></script>
+    <script src="memory-letters.js"></script><script src="meadow.js"></script><script src="paper.js"></script><script src="script.js"></script>
   </body>
 </html>
