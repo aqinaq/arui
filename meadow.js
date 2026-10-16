@@ -217,7 +217,7 @@
   }
   // Deliberate large blooms frame the foreground on wide and narrow screens.
   const foreground = narrow
-    ? [[-.72,4.5,.85],[.76,4.2,.9],[-1.25,1.2,1.05],[1.28,1,1],[-.48,6,.65],[.5,6.4,.65]]
+    ? [[-.72,4.5,.85],[.76,4.2,.9],[-1.8,-2,1.15],[1.8,-2,1.15],[-2.4,-6,1.35],[2.4,-6,1.35]]
     : mobile
     ? [[-.85,4.5,1],[.95,4.2,1.15],[-1.6,1.2,1.35],[1.65,1,1.2],[-.55,6,.7],[.6,6.4,.7]]
     : [[-3.5,4,1.5],[3.6,4.2,1.7],[-5,1.2,1.8],[5.2,1,1.5],[-2.2,6,1.1],[2.6,6.4,1.3]];
@@ -806,27 +806,6 @@
   }
   const background=document.createElement("canvas");
   background.className="meadow-canvas";background.setAttribute("aria-hidden","true");document.body.prepend(background);
-  const blossom=(x,y,color,size=1)=>`<g transform="translate(${x} ${y}) scale(${size})">
-    ${[0,72,144,216,288].map(angle=>`<ellipse cx="0" cy="-11" rx="7" ry="13" transform="rotate(${angle})" fill="${color}" stroke="#fff8f4" stroke-width="1.5"/>`).join("")}
-    <circle r="7" fill="#f7ce75" stroke="#fff5d7" stroke-width="2"/></g>`;
-  const flowerSpray=`<svg viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g fill="none" stroke="#739c64" stroke-width="3" stroke-linecap="round">
-      <path d="M44 180 Q30 117 30 43 M44 180 Q70 132 67 92 M44 180 Q23 145 22 130"/>
-    </g>
-    <g fill="#8eb879" stroke="#6d9a66" stroke-width="1.5">
-      <ellipse cx="35" cy="112" rx="8" ry="17" transform="rotate(-39 35 112)"/>
-      <ellipse cx="56" cy="135" rx="8" ry="17" transform="rotate(45 56 135)"/>
-      <ellipse cx="25" cy="157" rx="7" ry="15" transform="rotate(-45 25 157)"/>
-    </g>
-    ${blossom(30,43,"#f38bb6",1.15)}
-    ${blossom(67,92,"#fff3da",.9)}
-    ${blossom(22,130,"#d19ad5",.7)}
-  </svg>`;
-  const mobileBlooms=document.createElement("div");
-  mobileBlooms.className="mobile-blooms";
-  mobileBlooms.setAttribute("aria-hidden","true");
-  mobileBlooms.innerHTML=flowerSpray.repeat(4);
-  document.body.prepend(mobileBlooms);
   createMeadow(background);
   const bouquet=document.querySelector("#bouquetCanvas");
   if(bouquet)createMeadow(bouquet,true);
