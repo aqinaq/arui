@@ -211,16 +211,16 @@
 .last-secret summary { font-size:17px; }
 @media(max-width:650px) {
  .journey-main { padding-inline:16px; }
- .journey-page .journey-panel { width:min(280px,100%); padding:19px 14px 17px; }
- .chapter-heading h1 { font-size:clamp(21px,6vw,23px); }
- .chapter-description { font-size:11px; }
- .journey-panel h2 { font-size:20px; }
- .memory-text { font-size:12px; }
+ .journey-page .journey-panel { width:min(250px,100%); padding:18px 12px 16px; }
+ .chapter-heading h1 { font-size:clamp(19px,5.5vw,21px); }
+ .chapter-description { font-size:10.5px; }
+ .journey-panel h2 { font-size:18px; }
+ .memory-text { font-size:11.5px; }
  .quiz-answers button { font-size:11px; }
  .memory-letter { padding:25px 21px 19px; }
- .memory-letter h2 { font-size:22px; }
+ .memory-letter h2 { font-size:19px; }
  .quiz-sheet { padding:15px 12px; }
- .quiz-sheet h2 { font-size:20px; }
+ .quiz-sheet h2 { font-size:18px; }
  .quiz-answers .rank-name { padding:8px; font-size:11px; }
  .bouquet-display { width:230px; max-width:100%; height:240px; }
  .chapter-footer { gap:12px; }
@@ -240,9 +240,9 @@
 .song-player .local-note:empty { display:none; }
 .song-player .text-button { font-size:11px; }
 @media(max-width:650px) {
- .journey-page .song-panel { width:min(280px,100%); }
- .song-line { font-size:18px; }
- .song-lyric { font-size:20px; }
+ .journey-page .song-panel { width:min(250px,100%); }
+ .song-line { font-size:17px; }
+ .song-lyric { font-size:19px; }
 }
 
 /* With no top banner, each chapter sits naturally in the meadow. */
@@ -290,9 +290,10 @@
 @media(max-width:650px) {
  .page-bouquet .journey-main { justify-items:center; padding:16px; }
  .page-bouquet .journey-panel { padding:17px; }
- .page-bouquet .chapter-heading h1 { font-size:22px; }
+ .page-bouquet .chapter-heading h1 { font-size:20px; }
  .page-bouquet .bouquet-layout { grid-template-columns:110px minmax(0,1fr); gap:12px; }
  .page-bouquet .bouquet-display { width:110px; height:145px; }
+ .page-bouquet .bouquet-tools h2 { font-size:19px; }
 }
 
 /* A quiet, open farewell on the final page. */

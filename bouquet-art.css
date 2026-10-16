@@ -61,11 +61,11 @@
 @keyframes gift-butterfly-flight { 0%,100% { transform:translate(0,0) rotate(-8deg); } 40% { transform:translate(7px,-14px) rotate(9deg); } 75% { transform:translate(-5px,-5px) rotate(-3deg); } }
 @keyframes gift-wingbeat { from { transform:perspective(150px) rotateY(-13deg); } to { transform:perspective(150px) rotateY(58deg); } }
 @media(max-width:650px) {
-  .page-bouquet .journey-panel { width:min(280px,100%); padding:19px 14px; }
+  .page-bouquet .journey-panel { width:min(250px,100%); padding:18px 12px; }
   .page-bouquet .bouquet-layout { gap:8px; }
   .page-bouquet #finishBouquet { font-size:10px; }
   .page-bouquet.bouquet-finished .journey-panel { padding:12px 8px 22px; }
-  .page-bouquet.bouquet-finished .chapter-heading h1 { font-size:27px; }
+  .page-bouquet.bouquet-finished .chapter-heading h1 { font-size:21px; }
   .page-bouquet.bouquet-finished .bouquet-display { width:100%; height:clamp(420px,70svh,680px); }
   .butterfly-1 { --butterfly-size:64px; left:0; }
   .butterfly-3 { --butterfly-size:52px; right:0; }
