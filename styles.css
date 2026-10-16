@@ -891,9 +891,24 @@ h1 em { color: #c83c7d; font-weight: 700; text-shadow: 1px 2px 0 rgba(255,224,23
 .error-content h1 { font-size: 34px; margin-bottom: 16px; }
 .error-content > p:not(.error-code) { font-size: 12px; line-height: 1.65; }
 @media (max-width: 600px) {
-  .stage { padding: 30px 24px; }
-  .card, .rating-card { width: min(350px, 100%); padding: 25px 22px 21px; }
-  .card h1, .apology-card h1, .flow-card h1, .rating-card h1 { font-size: 27px; }
+  .stage { padding: 30px 16px; }
+  .card, .rating-card { width: min(280px, 100%); padding: 21px 14px 18px; }
+  .card h1, .apology-card h1, .flow-card h1, .rating-card h1 { font-size: clamp(21px, 6vw, 23px); }
+  .card .eyebrow { font-size: 8px; }
+  .card .message { font-size: 12px; line-height: 1.55; }
+  .promise { padding: 9px 10px; margin-block: 13px; }
+  .promise p { font-size: 11px; }
+  .question { font-size: 15px; }
+  .secret-note, .rating-stage .secret-note {
+    width: min(270px, calc(100% - 24px));
+    padding: 21px 16px;
+  }
+  .secret-note.movable-note { --note-x: 8px; }
+  .secret-note h2 { font-size: 21px; }
+  .secret-note > p:not(.eyebrow) { font-size: 12px; }
+  .error-window { width: min(280px, 100%); }
+  .error-content { padding: 21px 16px; }
+  .error-content h1 { font-size: 27px; }
   .button-playground { height: 110px; }
   .button-playground .btn-yes { left: 50%; width: 170px; top: 5px; }
   .button-playground .btn-no { top: 59px; right: calc(50% - 42px); }

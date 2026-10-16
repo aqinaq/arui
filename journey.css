@@ -210,9 +210,13 @@
 .last-secret { margin:20px 0 16px; padding:15px 5px; }
 .last-secret summary { font-size:17px; }
 @media(max-width:650px) {
- .journey-main { padding-inline:24px; }
- .journey-page .journey-panel { width:min(350px,100%); padding:22px 18px 19px; }
- .chapter-heading h1 { font-size:27px; }
+ .journey-main { padding-inline:16px; }
+ .journey-page .journey-panel { width:min(280px,100%); padding:19px 14px 17px; }
+ .chapter-heading h1 { font-size:clamp(21px,6vw,23px); }
+ .chapter-description { font-size:11px; }
+ .journey-panel h2 { font-size:20px; }
+ .memory-text { font-size:12px; }
+ .quiz-answers button { font-size:11px; }
  .memory-letter { padding:25px 21px 19px; }
  .memory-letter h2 { font-size:22px; }
  .quiz-sheet { padding:15px 12px; }
@@ -236,9 +240,9 @@
 .song-player .local-note:empty { display:none; }
 .song-player .text-button { font-size:11px; }
 @media(max-width:650px) {
- .journey-page .song-panel { width:min(350px,100%); }
- .song-line { font-size:19px; }
- .song-lyric { font-size:22px; }
+ .journey-page .song-panel { width:min(280px,100%); }
+ .song-line { font-size:18px; }
+ .song-lyric { font-size:20px; }
 }
 
 /* With no top banner, each chapter sits naturally in the meadow. */

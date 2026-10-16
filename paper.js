@@ -145,7 +145,7 @@ document.querySelectorAll('.secret-note').forEach(note => {
   handle.setAttribute('aria-label', 'Жазбаны жылжыту: ұстап тартыңыз немесе бағыт пернелерін қолданыңыз. Home — бастапқы орны.');
   note.append(handle);
   note.classList.add('movable-note');
-  let x = 18, y = 10, press = null;
+  let x = matchMedia('(max-width: 600px)').matches ? 8 : 18, y = 10, press = null;
 
   function moveNote(nextX, nextY) {
     const maxX = Math.max(18, Math.min(520, (window.innerWidth - note.offsetWidth) / 2 - 12));
@@ -179,7 +179,7 @@ document.querySelectorAll('.secret-note').forEach(note => {
   handle.addEventListener('keydown', event => {
     const step = event.shiftKey ? 30 : 10;
     const directions = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] };
-    if (event.key === 'Home') { event.preventDefault(); moveNote(18, 10); }
+    if (event.key === 'Home') { event.preventDefault(); moveNote(matchMedia('(max-width: 600px)').matches ? 8 : 18, 10); }
     else if (directions[event.key]) {
       event.preventDefault();
       const [dx, dy] = directions[event.key]; moveNote(x + dx, y + dy);

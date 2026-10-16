@@ -53,6 +53,7 @@
 @keyframes basket-peek { 0%,20%,100% { transform:rotate(0); } 45%,70% { transform:rotate(-14deg) translateY(-3px); } }
 @keyframes basket-treats { 0%,20%,100% { transform:translateY(0); } 45%,70% { transform:translateY(-6px); } }
 @media(max-width:650px) {
+  .page-date .journey-panel { width:min(280px,100%); }
   .page-date .date-choices { gap:12px; }
   .page-date .date-choices button { padding:8px 9px 16px; }
   .date-art { max-width:132px; margin-bottom:4px; }

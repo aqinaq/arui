@@ -201,7 +201,8 @@
     }
     flowers.push(bloom);
   }
-  const mobile = matchMedia("(pointer: coarse)").matches;
+  const narrow = matchMedia("(max-width: 650px)").matches;
+  const mobile = matchMedia("(pointer: coarse)").matches || narrow;
   // Full rings surround the viewing point, so every heading has a dense meadow.
   if(!bouquetMode) {
     const rings=mobile?14:18;
@@ -215,7 +216,9 @@
     }
   }
   // Deliberate large blooms frame the foreground on wide and narrow screens.
-  const foreground = mobile
+  const foreground = narrow
+    ? [[-.72,4.5,.85],[.76,4.2,.9],[-1.25,1.2,1.05],[1.28,1,1],[-.48,6,.65],[.5,6.4,.65]]
+    : mobile
     ? [[-.85,4.5,1],[.95,4.2,1.15],[-1.6,1.2,1.35],[1.65,1,1.2],[-.55,6,.7],[.6,6.4,.7]]
     : [[-3.5,4,1.5],[3.6,4.2,1.7],[-5,1.2,1.8],[5.2,1,1.5],[-2.2,6,1.1],[2.6,6.4,1.3]];
   if(!bouquetMode)foreground.forEach(([x,z,s],i)=>flower(x,z,s,[3,0,4,1,2,3][i]));
